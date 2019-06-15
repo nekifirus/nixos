@@ -10,15 +10,15 @@
       /etc/nixos/hardware-configuration.nix
     ];
 
-  boot.loader.grub.enable = true;
+  # boot.loader.grub.enable = true;
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.efiInstallAsRemovable = true;
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.version = 2;
   # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "nodev";
+  #boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5001b448b9563d7d";
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -43,6 +43,7 @@
     wget vim git gnupg htop
   ];
 
+  nixpkgs.config.allowUnfree = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -53,7 +54,15 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
+  # services.openvpn.servers = {
+  #   zenmateVPN  = {
+  #     config = '' config /root/vpn/ZenMate-linux-gb.ovpn '';
+  #     autoStart = false;
+  #     updateResolvConf = true;
+  #   };
+  # };
+
+  # open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
@@ -78,10 +87,10 @@
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.desktopManager.gnome3.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  # services.xserver.desktopManager.xfce.enable = true;
   services.xserver.windowManager.i3.enable = true;
-  services.xserver.windowManager.stumpwm.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
+  # services.xserver.windowManager.stumpwm.enable = true;
+  # services.xserver.windowManager.dwm.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nekifirus = {
