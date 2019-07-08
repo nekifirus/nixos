@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -36,11 +36,12 @@
 
   # Set your time zone.
   time.timeZone = "Asia/Ekaterinburg";
+  time.hardwareClockInLocalTime = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim git gnupg htop
+    wget vim git gnupg htop ntfs3g docker-compose
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -122,11 +123,31 @@
   # services.xserver.windowManager.stumpwm.enable = true;
   # services.xserver.windowManager.dwm.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nekifirus = {
     isNormalUser = true;
     uid = 1000;
+    extraGroups = [ "docker" "postgres" ];
   };
+
+  # containers block
+  containers.ps96 =
+    { config =
+      { config, pkgs, ... }:
+      { services.postgresql.enable = true;
+      services.postgresql.package = pkgs.postgresql_9_6;
+      services.postgresql.authentication = lib.mkForce ''
+    # Generated file; do not edit!
+    # TYPE  DATABASE        USER            ADDRESS                 METHOD
+    local   all             all                                     trust
+    host    all             all             127.0.0.1/32            trust
+    host    all             all             ::1/128                 trust
+    '';
+      };
+  };
+  containers.ps96.autoStart = true;
 
   # Enable autoupgrade
   system.autoUpgrade.enable = true;
