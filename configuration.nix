@@ -52,15 +52,45 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh.enable = false;
 
-  # services.openvpn.servers = {
-  #   zenmateVPN  = {
-  #     config = '' config /root/vpn/ZenMate-linux-gb.ovpn '';
-  #     autoStart = false;
-  #     updateResolvConf = true;
-  #   };
-  # };
+  services.openvpn.servers = {
+    zenmateVPN  = {
+      config = ''
+        client
+        remote 4-15-cz.cg-dialup.net 443
+        dev tun
+        proto udp
+
+        resolv-retry infinite
+        redirect-gateway def1
+        persist-key
+        persist-tun
+        nobind
+        cipher AES-256-CBC
+        auth SHA256
+        ping 5
+        ping-exit 60
+        ping-timer-rem
+        explicit-exit-notify 2
+        script-security 2
+        remote-cert-tls server
+        route-delay 5
+        tun-mtu 1500
+        fragment 1300
+        mssfix 1200
+        verb 4
+        comp-lzo
+
+        ca /vpn/ca.crt
+        cert /vpn/client.crt
+        key /vpn/client.key
+        auth-user-pass /vpn/auth.cred
+      '';
+      autoStart = false;
+      updateResolvConf = true;
+    };
+  };
 
   # open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
