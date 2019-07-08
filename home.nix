@@ -12,6 +12,8 @@
     pkgs.skype
     pkgs.zoom-us
     pkgs.gnumake
+    pkgs.abiword
+    pkgs.heroku
   ];
 
   programs.emacs = {
