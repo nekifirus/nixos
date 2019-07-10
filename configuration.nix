@@ -35,8 +35,8 @@
   # };
 
   # Set your time zone.
-  time.timeZone = "Asia/Ekaterinburg";
-  time.hardwareClockInLocalTime = true;
+  time.timeZone = "Asia/Aqtobe";
+  time.hardwareClockInLocalTime = false;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
