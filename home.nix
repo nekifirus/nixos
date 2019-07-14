@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   home.packages = [
@@ -14,8 +14,24 @@
     pkgs.gnumake
     pkgs.abiword
     pkgs.heroku
+    (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8]))
+    # pkgs.python37
+    # pkgs.python37Packages.pip
+    # pkgs.python37Packages.elpy
+    # pkgs.python37Packages.importmagic
+    # pkgs.python37Packages.jedi
+    # pkgs.python37Packages.flake8
+    # pkgs.python37Packages.autopep8
   ];
 
+  services.udiskie = {
+      enable = true;
+      automount = false;
+      notify = true;
+      tray = "auto";
+  };
+
+  services.emacs.enable = true;
   programs.emacs = {
     enable = true;
     extraPackages = ekpgs: [
@@ -103,6 +119,8 @@
       ekpgs.yasnippet-snippets
       ekpgs.docker-tramp
       ekpgs.counsel-tramp
+      ekpgs.py-autopep8
+      ekpgs.elpy
     ];
   };
 
@@ -162,11 +180,58 @@
     enable = true;
     userName = "Nikita Mistyukov";
     userEmail = "nekifirus@gmail.com";
-    ignores = ["*~" "*.swp" ".direnvrc"];
+    ignores = ["*~" "*.swp" ".direnvrc" ".envrc" "shell.nix"];
   };
 
+  xresources = {
+    properties = {
+      "XTerm*font" = "*-fixed-*-*-*-*-*";
+      "XTerm*faceName" = "pango:monospace";
+      "XTerm*faceSize" = "12";
+      "XTerm*termName" = "xterm-256color";
+      "XTerm*metaSendsEscape" = true;
+    };
+    extraConfig = ''
+      ! special
+      *.foreground:   #d0d0d0
+      *.background:   #151515
+      *.cursorColor:  #d0d0d0
 
-  # Prevent clobbering SSH_AUTH_SOCK
+      ! black
+      *.color0:       #151515
+      *.color8:       #505050
+
+      ! red
+      *.color1:       #ac4142
+      *.color9:       #ac4142
+
+      ! green
+      *.color2:       #90a959
+      *.color10:      #90a959
+
+      ! yellow
+      *.color3:       #f4bf75
+      *.color11:      #f4bf75
+
+      ! blue
+      *.color4:       #6a9fb5
+      *.color12:      #6a9fb5
+
+      ! magenta
+      *.color5:       #aa759f
+      *.color13:      #aa759f
+
+      ! cyan
+      *.color6:       #75b5aa
+      *.color14:      #75b5aa
+
+      ! white
+      *.color7:       #d0d0d0
+      *.color15:      #f5f5f5
+    '';
+  };
+
+  # prevent clobbering SSH_AUTH_SOCK
   home.sessionVariables.GSM_SKIP_SSH_AGENT_WORKAROUND = "1";
 
   # Disable gnome-keyring ssh-agent

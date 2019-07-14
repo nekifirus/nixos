@@ -19,9 +19,11 @@
   # boot.loader.grub.version = 2;
   # Define on which hard drive you want to install Grub.
   #boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5001b448b9563d7d";
+  boot.kernelModules = [ "coretemp" "it87"];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -41,7 +43,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim git gnupg htop ntfs3g docker-compose
+    tmux wget vim git gnupg htop ntfs3g docker-compose lm_sensors
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -117,11 +119,11 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.gnome3.enable = false;
   # services.xserver.desktopManager.xfce.enable = true;
   services.xserver.windowManager.i3.enable = true;
   # services.xserver.windowManager.stumpwm.enable = true;
-  # services.xserver.windowManager.dwm.enable = true;
+  services.xserver.windowManager.dwm.enable = true;
 
   virtualisation.docker.enable = true;
 
