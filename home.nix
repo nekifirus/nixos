@@ -3,6 +3,7 @@
 {
   home.packages = [
     pkgs.htop
+    pkgs.scrot
     pkgs.fortune
     pkgs.direnv
     pkgs.slack
@@ -14,14 +15,12 @@
     pkgs.gnumake
     pkgs.abiword
     pkgs.heroku
-    (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8]))
-    # pkgs.python37
-    # pkgs.python37Packages.pip
-    # pkgs.python37Packages.elpy
-    # pkgs.python37Packages.importmagic
-    # pkgs.python37Packages.jedi
-    # pkgs.python37Packages.flake8
-    # pkgs.python37Packages.autopep8
+    pkgs.gmrun
+    pkgs.xmobar
+    pkgs.gcc
+    pkgs.libffi.dev
+    pkgs.openssl.dev
+    (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 pip setuptools ]))
   ];
 
   services.udiskie = {
@@ -34,100 +33,102 @@
   services.emacs.enable = true;
   programs.emacs = {
     enable = true;
-    extraPackages = ekpgs: [
-      ekpgs.nix-mode
-      ekpgs.magit
-      ekpgs.ace-window
-      ekpgs.ag
-      ekpgs.alchemist
-      ekpgs.all-the-icons
-      ekpgs.all-the-icons-dired
-      ekpgs.all-the-icons-ivy
-      ekpgs.avy
-      ekpgs.avy-zap
-      ekpgs.base16-theme
-      ekpgs.bind-key
-      ekpgs.cider
-      ekpgs.clojure-mode
-      ekpgs.clojure-mode-extra-font-locking
-      ekpgs.clojure-snippets
-      ekpgs.company
-      ekpgs.company-statistics
-      ekpgs.copy-as-format
-      ekpgs.counsel
-      ekpgs.counsel-projectile
-      ekpgs.csv-mode
-      ekpgs.darkroom
-      ekpgs.diff-hl
-      ekpgs.diminish
-      ekpgs.direnv
-      ekpgs.docker
-      ekpgs.docker-compose-mode
-      ekpgs.dockerfile-mode
-      ekpgs.docker-tramp
-      ekpgs.elixir-mode
-      ekpgs.epl
-      ekpgs.exec-path-from-shell
-      ekpgs.expand-region
-      ekpgs.flycheck
-      ekpgs.flycheck-mix
-      ekpgs.gh
-      ekpgs.gist
-      ekpgs.gitignore-mode
-      ekpgs.google-this
-      ekpgs.google-translate
-      ekpgs.haml-mode
-      ekpgs.ht
-      ekpgs.htmlize
-      ekpgs.ivy
-      ekpgs.json-mode
-      ekpgs.json-reformat
-      ekpgs.json-snatcher
-      ekpgs.logito
-      ekpgs.magit-popup
-      ekpgs.markdown-mode
-      ekpgs.marshal
-      ekpgs.memoize
-      ekpgs.no-littering
-      ekpgs.parseclj
-      ekpgs.parseedn
-      ekpgs.pcache
-      ekpgs.pkg-info
-      ekpgs.plantuml-mode
-      ekpgs.projectile
-      ekpgs.queue
-      ekpgs.rainbow-delimiters
-      ekpgs.rainbow-identifiers
-      ekpgs.rainbow-mode
-      ekpgs.restart-emacs
-      ekpgs.reverse-im
-      ekpgs.sesman
-      ekpgs.smart-comment
-      ekpgs.smartparens
-      ekpgs.spinner
-      ekpgs.swiper
-      ekpgs.system-packages
-      ekpgs.tablist
-      ekpgs.toc-org
-      ekpgs.use-package
-      ekpgs.use-package-ensure-system-package
-      ekpgs.wakatime-mode
-      ekpgs.which-key
-      ekpgs.whole-line-or-region
-      ekpgs.yaml-mode
-      ekpgs.yasnippet
-      ekpgs.yasnippet-snippets
-      ekpgs.docker-tramp
-      ekpgs.counsel-tramp
-      ekpgs.py-autopep8
-      ekpgs.elpy
-    ];
+    extraPackages = (epkgs: (with epkgs.melpaPackages; [
+      nix-mode
+      magit
+      ace-window
+      ag
+      alchemist
+      all-the-icons
+      all-the-icons-dired
+      all-the-icons-ivy
+      avy
+      avy-zap
+      base16-theme
+      bind-key
+      cider
+      clojure-mode
+      clojure-mode-extra-font-locking
+      clojure-snippets
+      company
+      company-statistics
+      copy-as-format
+      counsel
+      counsel-projectile
+      epkgs.csv-mode
+      epkgs.darkroom
+      diff-hl
+      diminish
+      direnv
+      docker
+      docker-compose-mode
+      dockerfile-mode
+      docker-tramp
+      elixir-mode
+      epl
+      exec-path-from-shell
+      expand-region
+      flycheck
+      flycheck-mix
+      gh
+      gist
+      gitignore-mode
+      google-this
+      google-translate
+      haml-mode
+      haskell-mode
+      ht
+      htmlize
+      ivy
+      json-mode
+      json-reformat
+      json-snatcher
+      logito
+      magit-popup
+      markdown-mode
+      marshal
+      memoize
+      no-littering
+      parseclj
+      parseedn
+      pcache
+      pkg-info
+      plantuml-mode
+      projectile
+      epkgs.queue
+      rainbow-delimiters
+      rainbow-identifiers
+      epkgs.rainbow-mode
+      restart-emacs
+      reverse-im
+      sesman
+      smart-comment
+      smartparens
+      epkgs.spinner
+      swiper
+      system-packages
+      tablist
+      toc-org
+      use-package
+      use-package-ensure-system-package
+      wakatime-mode
+      which-key
+      whole-line-or-region
+      yaml-mode
+      yasnippet
+      yasnippet-snippets
+      docker-tramp
+      counsel-tramp
+      py-autopep8
+      elpy
+    ]));
   };
 
   programs.firefox = {
     enable = true;
     enableIcedTea = true;
     enableGoogleTalk = true;
+
   };
 
   programs.bash = {
@@ -181,6 +182,23 @@
     userName = "Nikita Mistyukov";
     userEmail = "nekifirus@gmail.com";
     ignores = ["*~" "*.swp" ".direnvrc" ".envrc" "shell.nix"];
+    extraConfig = {
+      core = { editor = "emacsclient -c"; };
+    };
+  };
+
+  xsession = {
+    initExtra = ''
+    xset -dpms
+    xset s off
+    '';
+    windowManager.xmonad = {
+                         enable = true;
+                         enableContribAndExtras = true;
+                         extraPackages =  haskellPackages: [
+                                       haskellPackages.xmobar
+                                       ];
+                         };
   };
 
   xresources = {
@@ -192,43 +210,82 @@
       "XTerm*metaSendsEscape" = true;
     };
     extraConfig = ''
-      ! special
-      *.foreground:   #d0d0d0
-      *.background:   #151515
-      *.cursorColor:  #d0d0d0
 
-      ! black
-      *.color0:       #151515
-      *.color8:       #505050
+       ! -----------------------------------------------------------------------------
+       ! File: gruvbox-dark.xresources
+       ! Description: Retro groove colorscheme generalized
+       ! Author: morhetz <morhetz@gmail.com>
+       ! Source: https://github.com/morhetz/gruvbox-generalized
+       ! Last Modified: 6 Sep 2014
+       ! -----------------------------------------------------------------------------
 
-      ! red
-      *.color1:       #ac4142
-      *.color9:       #ac4142
-
-      ! green
-      *.color2:       #90a959
-      *.color10:      #90a959
-
-      ! yellow
-      *.color3:       #f4bf75
-      *.color11:      #f4bf75
-
-      ! blue
-      *.color4:       #6a9fb5
-      *.color12:      #6a9fb5
-
-      ! magenta
-      *.color5:       #aa759f
-      *.color13:      #aa759f
-
-      ! cyan
-      *.color6:       #75b5aa
-      *.color14:      #75b5aa
-
-      ! white
-      *.color7:       #d0d0d0
-      *.color15:      #f5f5f5
+       ! hard contrast:
+       *background: #1d2021
+       ! medium contrast: *background: #282828
+       ! soft contrast: *background: #32302f
+       *foreground: #ebdbb2
+       ! Black + DarkGrey
+       *color0:  #282828
+       *color8:  #928374
+       ! DarkRed + Red
+       *color1:  #cc241d
+       *color9:  #fb4934
+       ! DarkGreen + Green
+       *color2:  #98971a
+       *color10: #b8bb26
+       ! DarkYellow + Yellow
+       *color3:  #d79921
+       *color11: #fabd2f
+       ! DarkBlue + Blue
+       *color4:  #458588
+       *color12: #83a598
+       ! DarkMagenta + Magenta
+       *color5:  #b16286
+       *color13: #d3869b
+       ! DarkCyan + Cyan
+       *color6:  #689d6a
+       *color14: #8ec07c
+       ! LightGrey + White
+       *color7:  #a89984
+       *color15: #ebdbb2
     '';
+
+      # ! special
+      # *.foreground:   #d0d0d0
+      # *.background:   #151515
+      # *.cursorColor:  #d0d0d0
+
+      # ! black
+      # *.color0:       #151515
+      # *.color8:       #505050
+
+      # ! red
+      # *.color1:       #ac4142
+      # *.color9:       #ac4142
+
+      # ! green
+      # *.color2:       #90a959
+      # *.color10:      #90a959
+
+      # ! yellow
+      # *.color3:       #f4bf75
+      # *.color11:      #f4bf75
+
+      # ! blue
+      # *.color4:       #6a9fb5
+      # *.color12:      #6a9fb5
+
+      # ! magenta
+      # *.color5:       #aa759f
+      # *.color13:      #aa759f
+
+      # ! cyan
+      # *.color6:       #75b5aa
+      # *.color14:      #75b5aa
+
+      # ! white
+      # *.color7:       #d0d0d0
+      # *.color15:      #f5f5f5
   };
 
   # prevent clobbering SSH_AUTH_SOCK

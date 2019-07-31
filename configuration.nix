@@ -43,7 +43,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    tmux wget vim git gnupg htop ntfs3g docker-compose lm_sensors
+    usbutils tmux wget vim git gnupg htop ntfs3g docker-compose lm_sensors home-manager
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -119,20 +119,47 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.gnome3.enable = false;
+  # services.xserver.desktopManager.gnome3.enable = true;
+  # services.xserver.desktopManager.pantheon.enable = true;
+  # services.xserver.desktopManager.deepin.enable = true;
   # services.xserver.desktopManager.xfce.enable = true;
   services.xserver.windowManager.i3.enable = true;
+  # services.xserver.windowManager.i3.package = pkgs.i3-gaps;
   # services.xserver.windowManager.stumpwm.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
+  services.xserver.windowManager.xmonad.enable = true;
+  # services.xserver.windowManager.dwm.enable = true;
+  services.xserver.windowManager.awesome.enable = true;
+  # services.xserver.desktopManager.default = "none";
 
   virtualisation.docker.enable = true;
 
+  services.emacs.enable = true;
+  services.emacs.install = true;
+  services.emacs.defaultEditor = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.nekifirus = {
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = [ "docker" "postgres" ];
-  };
+  users.users = [
+              {name = "nekifirus";
+               isNormalUser = true;
+               uid = 1000;
+               extraGroups = [ "docker" "postgres" ];
+               }
+               { name = "nut";
+               uid = 84;
+               home = "/var/lib/nut";
+               createHome = true;
+               group = "nut";
+               description = "UPnP A/V Media Server user";
+               }
+  ];
+
+  users.groups = [
+      { name = "nut";
+        gid = 84;
+      }
+    ];
+
+
 
   # containers block
   containers.ps96 =
@@ -149,7 +176,17 @@
     '';
       };
   };
-  containers.ps96.autoStart = true;
+  containers.ps96.autoStart = false;
+
+  powerManagement.cpuFreqGovernor = "ondemand";
+
+  power.ups = {
+    enable = true;
+    ups.cyberpower = {
+      driver = "powerpanel";
+      port = "auto";
+    };
+  };
 
   # Enable autoupgrade
   system.autoUpgrade.enable = true;
