@@ -24,6 +24,7 @@
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
+  services.avahi.ipv4 = false;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -43,7 +44,24 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    usbutils tmux wget vim git gnupg htop ntfs3g docker-compose lm_sensors home-manager
+    traceroute
+    telnet
+    pptp
+    usbutils
+    tmux
+    wget
+    pass
+    vim
+    git
+    gitAndTools.git-extras
+    gnupg
+    htop
+    ntfs3g
+    docker-compose
+    lm_sensors
+    home-manager
+    networkmanagerapplet
+    unzip
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -51,15 +69,19 @@
   # started in user sessions.
   # programs.mtr.enable = true;
   programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
-
+  programs.slock.enable = true;
+  programs.nm-applet.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
 
+  location.latitude = 51.395777;
+  location.longitude = 58.127907;
+
   services.redshift = {
     enable = true;
-    provider = "geoclue2";
+    # provider = "geoclue2";
     # latitude = "51.395777";
     # longitude = "58.127907";
     temperature = {
@@ -73,48 +95,47 @@
 
   services.openvpn.servers = {
     zenmateVPN  = {
+      # config = "config /root/vpn/openvpn.ovpn";
       config = ''
-        client
-        remote 4-15-cz.cg-dialup.net 443
-        dev tun
-        proto udp
+client
+remote 9-15-cz.cg-dialup.net 443
+dev tun
+proto udp
 
-        resolv-retry infinite
-        redirect-gateway def1
-        persist-key
-        persist-tun
-        nobind
-        cipher AES-256-CBC
-        auth SHA256
-        ping 5
-        ping-exit 60
-        ping-timer-rem
-        explicit-exit-notify 2
-        script-security 2
-        remote-cert-tls server
-        route-delay 5
-        tun-mtu 1500
-        fragment 1300
-        mssfix 1200
-        verb 4
-        comp-lzo
+resolv-retry infinite
+redirect-gateway def1
+persist-key
+persist-tun
+nobind
+cipher AES-256-CBC
+auth SHA256
+ping 15
+ping-exit 90
+ping-timer-rem
+script-security 2
+remote-cert-tls server
+route-delay 5
+verb 4
+comp-lzo
 
-        ca /vpn/ca.crt
-        cert /vpn/client.crt
-        key /vpn/client.key
-        auth-user-pass /vpn/auth.cred
+ca /root/vpn/ca.crt
+cert /root/vpn/client.crt
+key /root/vpn/client.key
+auth-user-pass /root/vpn/auth.cred
       '';
       autoStart = false;
       updateResolvConf = true;
+
     };
   };
 
+  systemd.extraConfig = "DefaultStartLimitIntervalSec=2\nDefaultStartLimitBurst=20";
   # open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
+  networking.firewall.connectionTrackingModules = [ "pptp" ];
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -133,7 +154,7 @@
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-  # services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.gnome3.enable = false;
   # services.xserver.desktopManager.pantheon.enable = true;
   # services.xserver.desktopManager.deepin.enable = true;
   # services.xserver.desktopManager.xfce.enable = true;
@@ -193,9 +214,12 @@
   containers.ps96.autoStart = false;
 
   powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.resumeCommands = ''
+    slock
+  '';
 
   power.ups = {
-    enable = true;
+    enable = false;
     ups.cyberpower = {
       driver = "powerpanel";
       port = "auto";

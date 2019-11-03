@@ -2,6 +2,15 @@
 
 {
   home.packages = [
+    pkgs.lxappearance-gtk3
+    pkgs.pass
+    pkgs.surf
+    pkgs.qutebrowser
+    pkgs.epiphany
+    pkgs.ag
+    pkgs.urlview
+    pkgs.xclip
+    pkgs.xsel
     pkgs.htop
     pkgs.scrot
     pkgs.fortune
@@ -9,7 +18,6 @@
     pkgs.slack
     pkgs.tdesktop
     pkgs.ispell
-    pkgs.ag
     pkgs.skype
     pkgs.zoom-us
     pkgs.gnumake
@@ -20,7 +28,6 @@
     pkgs.gcc
     pkgs.libffi.dev
     pkgs.openssl.dev
-    (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 pip setuptools ]))
   ];
 
   services.udiskie = {
@@ -48,7 +55,7 @@
       bind-key
       cider
       clojure-mode
-      clojure-mode-extra-font-locking
+      # clojure-mode-extra-font-locking
       clojure-snippets
       company
       company-statistics
@@ -122,6 +129,7 @@
       counsel-tramp
       py-autopep8
       elpy
+      (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort pip setuptools redis celery flask ]))
     ]));
   };
 
@@ -129,7 +137,31 @@
     enable = true;
     enableIcedTea = true;
     enableGoogleTalk = true;
+  };
 
+  programs.chromium = {
+    enable = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    tmuxp.enable = true;
+    extraConfig = ''
+      set -g mouse on
+    '';
+    plugins =  with pkgs; [
+            tmuxPlugins.cpu
+            tmuxPlugins.yank
+            tmuxPlugins.urlview
+            tmuxPlugins.sensible
+            {
+              plugin = tmuxPlugins.continuum;
+              extraConfig = ''
+                set -g @continuum-restore 'on'
+                set -g @continuum-save-interval '15' # minutes
+              '';
+            }
+          ];
   };
 
   programs.bash = {
@@ -214,46 +246,103 @@
       "XTerm*termName" = "xterm-256color";
       "XTerm*metaSendsEscape" = true;
     };
-    extraConfig = ''
+    # lighttheme
+    # extraConfig = ''
+    # ! Base16 Gruvbox light, hard
+    # ! Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 
-       ! -----------------------------------------------------------------------------
-       ! File: gruvbox-dark.xresources
-       ! Description: Retro groove colorscheme generalized
-       ! Author: morhetz <morhetz@gmail.com>
-       ! Source: https://github.com/morhetz/gruvbox-generalized
-       ! Last Modified: 6 Sep 2014
-       ! -----------------------------------------------------------------------------
+    # #define base00 #f9f5d7
+    # #define base01 #ebdbb2
+    # #define base02 #d5c4a1
+    # #define base03 #bdae93
+    # #define base04 #665c54
+    # #define base05 #504945
+    # #define base06 #3c3836
+    # #define base07 #282828
+    # #define base08 #9d0006
+    # #define base09 #af3a03
+    # #define base0A #b57614
+    # #define base0B #79740e
+    # #define base0C #427b58
+    # #define base0D #076678
+    # #define base0E #8f3f71
+    # #define base0F #d65d0e
 
-       ! hard contrast:
-       *background: #1d2021
-       ! medium contrast: *background: #282828
-       ! soft contrast: *background: #32302f
-       *foreground: #ebdbb2
-       ! Black + DarkGrey
-       *color0:  #282828
-       *color8:  #928374
-       ! DarkRed + Red
-       *color1:  #cc241d
-       *color9:  #fb4934
-       ! DarkGreen + Green
-       *color2:  #98971a
-       *color10: #b8bb26
-       ! DarkYellow + Yellow
-       *color3:  #d79921
-       *color11: #fabd2f
-       ! DarkBlue + Blue
-       *color4:  #458588
-       *color12: #83a598
-       ! DarkMagenta + Magenta
-       *color5:  #b16286
-       *color13: #d3869b
-       ! DarkCyan + Cyan
-       *color6:  #689d6a
-       *color14: #8ec07c
-       ! LightGrey + White
-       *color7:  #a89984
-       *color15: #ebdbb2
-    '';
+    # *.foreground:   base05
+    # #ifdef background_opacity
+    # *.background:   [background_opacity]base00
+    # #else
+    # *.background:   base00
+    # #endif
+    # *.cursorColor:  base05
+
+    # *.color0:       base00
+    # *.color1:       base08
+    # *.color2:       base0B
+    # *.color3:       base0A
+    # *.color4:       base0D
+    # *.color5:       base0E
+    # *.color6:       base0C
+    # *.color7:       base05
+
+    # *.color8:       base03
+    # *.color9:       base08
+    # *.color10:      base0B
+    # *.color11:      base0A
+    # *.color12:      base0D
+    # *.color13:      base0E
+    # *.color14:      base0C
+    # *.color15:      base07
+
+    # ! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+    # ! use 'shell' template to set these if necessary
+    # *.color16:      base09
+    # *.color17:      base0F
+    # *.color18:      base01
+    # *.color19:      base02
+    # *.color20:      base04
+    # *.color21:      base06
+    # '';
+    # extraConfig = ''
+
+    #    ! -----------------------------------------------------------------------------
+    #    ! File: gruvbox-dark.xresources
+    #    ! Description: Retro groove colorscheme generalized
+    #    ! Author: morhetz <morhetz@gmail.com>
+    #    ! Source: https://github.com/morhetz/gruvbox-generalized
+    #    ! Last Modified: 6 Sep 2014
+    #    ! -----------------------------------------------------------------------------
+
+    #    ! hard contrast:
+    #    *background: #1d2021
+    #    ! medium contrast: *background: #282828
+    #    ! soft contrast: *background: #32302f
+    #    *foreground: #ebdbb2
+    #    ! Black + DarkGrey
+    #    *color0:  #282828
+    #    *color8:  #928374
+    #    ! DarkRed + Red
+    #    *color1:  #cc241d
+    #    *color9:  #fb4934
+    #    ! DarkGreen + Green
+    #    *color2:  #98971a
+    #    *color10: #b8bb26
+    #    ! DarkYellow + Yellow
+    #    *color3:  #d79921
+    #    *color11: #fabd2f
+    #    ! DarkBlue + Blue
+    #    *color4:  #458588
+    #    *color12: #83a598
+    #    ! DarkMagenta + Magenta
+    #    *color5:  #b16286
+    #    *color13: #d3869b
+    #    ! DarkCyan + Cyan
+    #    *color6:  #689d6a
+    #    *color14: #8ec07c
+    #    ! LightGrey + White
+    #    *color7:  #a89984
+    #    *color15: #ebdbb2
+    # '';
 
       # ! special
       # *.foreground:   #d0d0d0
