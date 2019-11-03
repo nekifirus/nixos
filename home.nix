@@ -205,6 +205,10 @@
       "1BAB252022782531597538185AA83E75A2428470"
     ];
     enableExtraSocket = true;
+    extraConfig = ''
+    allow-emacs-pinentry
+    allow-loopback-pinentry
+    '';
   };
 
 

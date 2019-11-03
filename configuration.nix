@@ -68,7 +68,11 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "gtk2";
+  };
   programs.slock.enable = true;
   programs.nm-applet.enable = true;
   # List services that you want to enable:
@@ -194,8 +198,6 @@ auth-user-pass /root/vpn/auth.cred
       }
     ];
 
-
-
   # containers block
   containers.ps96 =
     { config =
@@ -214,17 +216,6 @@ auth-user-pass /root/vpn/auth.cred
   containers.ps96.autoStart = false;
 
   powerManagement.cpuFreqGovernor = "ondemand";
-  powerManagement.resumeCommands = ''
-    slock
-  '';
-
-  power.ups = {
-    enable = false;
-    ups.cyberpower = {
-      driver = "powerpanel";
-      port = "auto";
-    };
-  };
 
   # Enable autoupgrade
   system.autoUpgrade.enable = true;
