@@ -24,11 +24,12 @@
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
+  networking.dhcpcd.denyInterfaces = [ "docker*" "ve*" "br*" ];
   services.avahi.ipv4 = false;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # networking.proxy.noProxy = "127..0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   # i18n = {
@@ -62,6 +63,8 @@
     home-manager
     networkmanagerapplet
     unzip
+    st
+    dmenu
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -164,9 +167,9 @@ auth-user-pass /root/vpn/auth.cred
   # services.xserver.desktopManager.xfce.enable = true;
   services.xserver.windowManager.i3.enable = true;
   # services.xserver.windowManager.i3.package = pkgs.i3-gaps;
-  # services.xserver.windowManager.stumpwm.enable = true;
+  services.xserver.windowManager.stumpwm.enable = true;
   services.xserver.windowManager.xmonad.enable = true;
-  # services.xserver.windowManager.dwm.enable = true;
+  services.xserver.windowManager.dwm.enable = true;
   services.xserver.windowManager.awesome.enable = true;
   # services.xserver.desktopManager.default = "none";
 
@@ -175,6 +178,18 @@ auth-user-pass /root/vpn/auth.cred
   services.emacs.enable = true;
   services.emacs.install = true;
   services.emacs.defaultEditor = true;
+
+  nixpkgs.config = {
+    dwm.patches = [
+      ./dwm/mod4.patch
+      ./dwm/xterm.patch
+      ./dwm/dragmfact.patch
+      ./dwm/fakefullscreen.patch
+      ./dwm/pertag.patch
+      # ./dwm/systray.patch
+    ];
+  };
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = [

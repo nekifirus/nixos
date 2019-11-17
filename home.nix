@@ -28,6 +28,7 @@
     pkgs.gcc
     pkgs.libffi.dev
     pkgs.openssl.dev
+    pkgs.surfraw
   ];
 
   services.udiskie = {
@@ -93,6 +94,9 @@
       logito
       lua-mode
       magit-popup
+      # magit-gh-pulls
+      magithub
+      forge
       markdown-mode
       marshal
       memoize
@@ -129,7 +133,7 @@
       counsel-tramp
       py-autopep8
       elpy
-      (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort pip setuptools redis celery flask ]))
+      (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort rope pip setuptools redis celery flask ]))
     ]));
   };
 
@@ -140,6 +144,10 @@
   };
 
   programs.chromium = {
+    enable = true;
+  };
+
+  programs.rofi = {
     enable = true;
   };
 

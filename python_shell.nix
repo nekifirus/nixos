@@ -1,29 +1,35 @@
-with import <nixpkgs> {};
-
-(python37.withPackages (ps: with ps; [pip elpy jedi flake8 autopep8 celery twilio boto3])).env
-
-
 # with import <nixpkgs> {};
 
-# stdenv.mkDerivation {
-#   name = "python";
+# (python37.withPackages (ps: with ps; [pip jedi flake8 autopep8 celery twilio boto3])).env
 
-#   buildInputs = [
-#     bash
-#     libxml2
-#     # libxslt
-#     postgresql
-#     (python37.withPackages (ps: with ps; [pip elpy jedi flake8 autopep8 celery twilio]))
-#   ];
 
-#   shellHook = ''
-#     export LANG="en_US.UTF-8"
-#     export LC_ALL="en_US.UTF-8"
-#     export PGDATA="$PWD/db"
+with import <nixpkgs> {};
 
-#     alias pip="PIP_PREFIX='$(pwd)/venv/lib/python3.7/site-packages' \pip"
-#     export PYTHONPATH="$(pwd)/venv/lib/python3.7/site-packages:PYTHONPATH"
-#     unset SOURCE_DATE_EPOCH
-#     source venv/bin/activate
-#   '';
-# }
+stdenv.mkDerivation {
+  name = "python";
+
+  buildInputs = [
+    bash
+    libxml2
+    libffi
+    openssl
+    glibc.static
+    cmake
+    ncurses
+    # libxslt
+    postgresql
+    python37Packages.pip
+    (python37.withPackages (ps: with ps; [pip jedi flake8 autopep8 celery twilio]))
+  ];
+
+  shellHook = ''
+    export LANG="en_US.UTF-8"
+    export LC_ALL="en_US.UTF-8"
+    export PGDATA="$PWD/db"
+
+    alias pip="PIP_PREFIX='$(pwd)/venv/lib/python3.7/site-packages' \pip"
+    export PYTHONPATH="$(pwd)/venv/lib/python3.7/site-packages:PYTHONPATH"
+    unset SOURCE_DATE_EPOCH
+    source venv/bin/activate
+  '';
+}
