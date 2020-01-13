@@ -2,6 +2,8 @@
 
 {
   home.packages = [
+    pkgs.elinks
+    pkgs.edbrowse
     pkgs.lxappearance-gtk3
     pkgs.pass
     pkgs.surf
@@ -44,7 +46,7 @@
     tray = true;
   };
 
-  services.emacs.enable = true;
+  # services.emacs.enable = true;
   programs.emacs = {
     enable = true;
     extraPackages = (epkgs: (with epkgs.melpaPackages; [
@@ -99,7 +101,7 @@
       json-reformat
       json-snatcher
       logito
-      lua-mode
+      # lua-mode
       magit-popup
       # magit-gh-pulls
       magithub

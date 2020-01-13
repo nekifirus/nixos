@@ -21,6 +21,9 @@
   #boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5001b448b9563d7d";
   boot.kernelModules = [ "coretemp" "it87"];
 
+  # try to disable swap
+  swapDevices = lib.mkForce [ ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
@@ -65,6 +68,9 @@
     unzip
     st
     dmenu
+    redis
+    pavucontrol
+    pulsemixer
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -149,10 +155,14 @@ auth-user-pass /root/vpn/auth.cred
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.extraConfig = ''
+  #    default-sample-channels = 4
+  # '';
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.layout = "us, ru";
+  services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.xkbOptions = "grp:caps_toggle, grp_led:caps, terminate:ctr_alt_bksp";
 
   # Enable touchpad support.
@@ -179,6 +189,97 @@ auth-user-pass /root/vpn/auth.cred
   services.emacs.enable = true;
   services.emacs.install = true;
   services.emacs.defaultEditor = true;
+  services.emacs.package = with pkgs; (emacsWithPackages (with emacsPackagesNg; [
+    nix-mode
+    magit
+    ace-window
+    ag
+    alchemist
+    all-the-icons
+    all-the-icons-dired
+    all-the-icons-ivy
+    avy
+    avy-zap
+    base16-theme
+    bind-key
+    cider
+    clojure-mode
+    # clojure-mode-extra-font-locking
+    clojure-snippets
+    company
+    company-statistics
+    copy-as-format
+    counsel
+    counsel-projectile
+    diff-hl
+    diminish
+    direnv
+    docker
+    docker-compose-mode
+    dockerfile-mode
+    docker-tramp
+    elixir-mode
+    epl
+    eredis
+    exec-path-from-shell
+    expand-region
+    flycheck
+    flycheck-mix
+    gh
+    gist
+    gitignore-mode
+    google-this
+    google-translate
+    haml-mode
+    haskell-mode
+    ht
+    htmlize
+    ivy
+    json-mode
+    json-reformat
+    json-snatcher
+    logito
+    magit-popup
+    # magit-gh-pulls
+    magithub
+    forge
+    markdown-mode
+    marshal
+    memoize
+    no-littering
+    parseclj
+    parseedn
+    pcache
+    pkg-info
+    plantuml-mode
+    projectile
+    rainbow-delimiters
+    rainbow-identifiers
+    rainbow-mode
+    restart-emacs
+    reverse-im
+    sesman
+    smart-comment
+    smartparens
+    swiper
+    system-packages
+    tablist
+    toc-org
+    use-package
+    use-package-ensure-system-package
+    vue-mode
+    wakatime-mode
+    which-key
+    whole-line-or-region
+    yaml-mode
+    yasnippet
+    yasnippet-snippets
+    docker-tramp
+    counsel-tramp
+    py-autopep8
+    elpy
+    (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort rope pip setuptools redis celery flask ]))
+  ]));
 
   nixpkgs.config = {
     dwm.patches = [
@@ -197,7 +298,11 @@ auth-user-pass /root/vpn/auth.cred
               {name = "nekifirus";
                isNormalUser = true;
                uid = 1000;
-               extraGroups = [ "docker" "postgres" ];
+               extraGroups = [
+                 "wheel"
+                 "networkmanager"
+                 "docker"
+                 "postgres" ];
                }
                { name = "nut";
                uid = 84;

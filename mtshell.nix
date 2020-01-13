@@ -18,8 +18,8 @@ mkShell {
   buildInputs = [
     git
 
-    elixir
-    erlang
+    elixir_1_7
+    erlangR20
 
     libtool
     autoconf

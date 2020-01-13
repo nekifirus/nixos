@@ -19,7 +19,8 @@ stdenv.mkDerivation {
     # libxslt
     postgresql
     python37Packages.pip
-    (python37.withPackages (ps: with ps; [pip jedi flake8 autopep8 celery twilio]))
+    python37Packages.celery
+    (python37.withPackages (ps: with ps; [jedi isort flake8 autopep8 celery]))
   ];
 
   shellHook = ''
