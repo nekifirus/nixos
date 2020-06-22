@@ -8,6 +8,11 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./xserver.nix
+      ./emacs.nix
+      ./packages.nix
+      ./containers.nix
+      ./redshift.nix
     ];
 
   # boot.loader.grub.enable = true;
@@ -45,34 +50,6 @@
   time.timeZone = "Asia/Aqtobe";
   time.hardwareClockInLocalTime = false;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    traceroute
-    telnet
-    pptp
-    usbutils
-    tmux
-    wget
-    pass
-    vim
-    git
-    gitAndTools.git-extras
-    gnupg
-    htop
-    ntfs3g
-    docker-compose
-    lm_sensors
-    home-manager
-    networkmanagerapplet
-    unzip
-    st
-    dmenu
-    redis
-    pavucontrol
-    pulsemixer
-  ];
-
   nixpkgs.config.allowUnfree = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -82,65 +59,13 @@
     enableSSHSupport = true;
     pinentryFlavor = "gtk2";
   };
+
   programs.slock.enable = true;
   programs.nm-applet.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
-
-  location.latitude = 51.395777;
-  location.longitude = 58.127907;
-
-  services.redshift = {
-    enable = true;
-    # provider = "geoclue2";
-    # latitude = "51.395777";
-    # longitude = "58.127907";
-    temperature = {
-      night = 4200;
-    };
-    brightness = {
-      night = "0.97";
-    };
-  };
-
-
-  services.openvpn.servers = {
-    zenmateVPN  = {
-      # config = "config /root/vpn/openvpn.ovpn";
-      config = ''
-client
-remote 9-15-cz.cg-dialup.net 443
-dev tun
-proto udp
-
-resolv-retry infinite
-redirect-gateway def1
-persist-key
-persist-tun
-nobind
-cipher AES-256-CBC
-auth SHA256
-ping 15
-ping-exit 90
-ping-timer-rem
-script-security 2
-remote-cert-tls server
-route-delay 5
-verb 4
-comp-lzo
-
-ca /root/vpn/ca.crt
-cert /root/vpn/client.crt
-key /root/vpn/client.key
-auth-user-pass /root/vpn/auth.cred
-      '';
-      autoStart = false;
-      updateResolvConf = true;
-
-    };
-  };
 
   systemd.extraConfig = "DefaultStartLimitIntervalSec=2\nDefaultStartLimitBurst=20";
   # open ports in the firewall.
@@ -159,182 +84,20 @@ auth-user-pass /root/vpn/auth.cred
   #    default-sample-channels = 4
   # '';
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us, ru";
-  services.xserver.videoDrivers = [ "nvidia" ];
-  services.xserver.xkbOptions = "grp:caps_toggle, grp_led:caps, terminate:ctr_alt_bksp";
-
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.desktopManager.gnome3.enable = false;
-  # services.xserver.desktopManager.pantheon.enable = true;
-  # services.xserver.desktopManager.deepin.enable = true;
-  # services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.windowManager.i3.enable = true;
-  # services.xserver.windowManager.i3.package = pkgs.i3-gaps;
-  services.xserver.windowManager.stumpwm.enable = true;
-  services.xserver.windowManager.xmonad.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
-  services.xserver.windowManager.exwm.enable = true;
-  services.xserver.windowManager.awesome.enable = true;
-  # services.xserver.desktopManager.default = "none";
-
   virtualisation.docker.enable = true;
 
-  services.emacs.enable = true;
-  services.emacs.install = true;
-  services.emacs.defaultEditor = true;
-  services.emacs.package = with pkgs; (emacsWithPackages (with emacsPackagesNg; [
-    nix-mode
-    magit
-    ace-window
-    ag
-    alchemist
-    all-the-icons
-    all-the-icons-dired
-    all-the-icons-ivy
-    avy
-    avy-zap
-    base16-theme
-    bind-key
-    cider
-    clojure-mode
-    # clojure-mode-extra-font-locking
-    clojure-snippets
-    company
-    company-statistics
-    copy-as-format
-    counsel
-    counsel-projectile
-    diff-hl
-    diminish
-    direnv
-    docker
-    docker-compose-mode
-    dockerfile-mode
-    docker-tramp
-    elixir-mode
-    epl
-    eredis
-    exec-path-from-shell
-    expand-region
-    flycheck
-    flycheck-mix
-    gh
-    gist
-    gitignore-mode
-    google-this
-    google-translate
-    haml-mode
-    haskell-mode
-    ht
-    htmlize
-    ivy
-    json-mode
-    json-reformat
-    json-snatcher
-    logito
-    magit-popup
-    # magit-gh-pulls
-    magithub
-    forge
-    markdown-mode
-    marshal
-    memoize
-    no-littering
-    parseclj
-    parseedn
-    pcache
-    pkg-info
-    plantuml-mode
-    projectile
-    rainbow-delimiters
-    rainbow-identifiers
-    rainbow-mode
-    restart-emacs
-    reverse-im
-    sesman
-    smart-comment
-    smartparens
-    swiper
-    system-packages
-    tablist
-    toc-org
-    use-package
-    use-package-ensure-system-package
-    vue-mode
-    wakatime-mode
-    which-key
-    whole-line-or-region
-    yaml-mode
-    yasnippet
-    yasnippet-snippets
-    docker-tramp
-    counsel-tramp
-    py-autopep8
-    elpy
-    (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort rope pip setuptools redis celery flask ]))
-  ]));
-
-  nixpkgs.config = {
-    dwm.patches = [
-      ./dwm/mod4.patch
-      ./dwm/xterm.patch
-      ./dwm/dragmfact.patch
-      ./dwm/fakefullscreen.patch
-      ./dwm/pertag.patch
-      # ./dwm/systray.patch
-    ];
-  };
-
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = [
-              {name = "nekifirus";
-               isNormalUser = true;
-               uid = 1000;
-               extraGroups = [
-                 "wheel"
-                 "networkmanager"
-                 "docker"
-                 "postgres" ];
-               }
-               { name = "nut";
-               uid = 84;
-               home = "/var/lib/nut";
-               createHome = true;
-               group = "nut";
-               description = "UPnP A/V Media Server user";
-               }
-  ];
-
-  users.groups = [
-      { name = "nut";
-        gid = 84;
-      }
-    ];
-
-  # containers block
-  containers.ps96 =
-    { config =
-      { config, pkgs, ... }:
-      { services.postgresql.enable = true;
-      services.postgresql.package = pkgs.postgresql_9_6;
-      services.postgresql.authentication = lib.mkForce ''
-    # Generated file; do not edit!
-    # TYPE  DATABASE        USER            ADDRESS                 METHOD
-    local   all             all                                     trust
-    host    all             all             127.0.0.1/32            trust
-    host    all             all             ::1/128                 trust
-    '';
-      };
+  users.users = {
+    nekifirus = {
+      isNormalUser = true;
+      uid = 1000;
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "docker"
+        "postgres" ];
+    };
   };
-  containers.ps96.autoStart = false;
 
   powerManagement.cpuFreqGovernor = "ondemand";
 

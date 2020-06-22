@@ -1,0 +1,100 @@
+{ config, pkgs, lib, ... }:
+
+{
+  services.emacs.enable = true;
+  services.emacs.install = true;
+  services.emacs.defaultEditor = true;
+  services.emacs.package = with pkgs; (emacsWithPackages (with emacsPackagesNg; [
+    nix-mode
+    magit
+    ace-window
+    ag
+    alchemist
+    all-the-icons
+    all-the-icons-dired
+    all-the-icons-ivy
+    avy
+    avy-zap
+    base16-theme
+    bind-key
+    cider
+    clojure-mode
+    # clojure-mode-extra-font-locking
+    clojure-snippets
+    company
+    company-statistics
+    copy-as-format
+    counsel
+    counsel-projectile
+    diff-hl
+    diminish
+    direnv
+    docker
+    docker-compose-mode
+    dockerfile-mode
+    docker-tramp
+    elixir-mode
+    epl
+    eredis
+    exec-path-from-shell
+    expand-region
+    flycheck
+    flycheck-mix
+    gh
+    gist
+    gitignore-mode
+    google-this
+    google-translate
+    haml-mode
+    haskell-mode
+    ht
+    htmlize
+    ivy
+    json-mode
+    json-reformat
+    json-snatcher
+    logito
+    magit-popup
+    # magit-gh-pulls
+    magithub
+    forge
+    markdown-mode
+    marshal
+    memoize
+    no-littering
+    parseclj
+    parseedn
+    pcache
+    pkg-info
+    plantuml-mode
+    projectile
+    rainbow-delimiters
+    rainbow-identifiers
+    rainbow-mode
+    restart-emacs
+    reverse-im
+    sesman
+    smart-comment
+    smartparens
+    swiper
+    system-packages
+    tablist
+    toc-org
+    use-package
+    use-package-ensure-system-package
+    vue-mode
+    wakatime-mode
+    which-key
+    whole-line-or-region
+    yaml-mode
+    yasnippet
+    yasnippet-snippets
+    docker-tramp
+    counsel-tramp
+    py-autopep8
+    py-isort
+    elpy
+    org-plus-contrib
+    (pkgs.python38.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort pip setuptools redis flask ]))
+  ]));
+}

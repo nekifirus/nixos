@@ -18,9 +18,9 @@ stdenv.mkDerivation {
     ncurses
     # libxslt
     postgresql
-    python37Packages.pip
-    python37Packages.celery
-    (python37.withPackages (ps: with ps; [jedi isort flake8 autopep8 celery]))
+    python38Packages.pip
+    python38Packages.celery
+    (python38.withPackages (ps: with ps; [requests jedi isort flake8 autopep8 celery]))
   ];
 
   shellHook = ''

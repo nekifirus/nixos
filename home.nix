@@ -1,161 +1,128 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.packages = [
-    pkgs.elinks
-    pkgs.edbrowse
-    pkgs.lxappearance-gtk3
-    pkgs.pass
-    pkgs.surf
-    pkgs.qutebrowser
-    pkgs.epiphany
-    pkgs.ag
-    pkgs.urlview
-    pkgs.xclip
-    pkgs.xsel
-    pkgs.htop
-    pkgs.scrot
-    pkgs.fortune
-    pkgs.direnv
-    pkgs.slack
-    pkgs.tdesktop
-    pkgs.ispell
-    pkgs.skype
-    pkgs.zoom-us
-    pkgs.gnumake
-    pkgs.abiword
-    pkgs.heroku
-    pkgs.gmrun
-    pkgs.xmobar
-    pkgs.gcc
-    pkgs.libffi.dev
-    pkgs.openssl.dev
-    pkgs.surfraw
-    pkgs.postgresql
-  ];
+  # services.udiskie = {
+  #     enable = true;
+  #     automount = false;
+  #     notify = true;
+  #     tray = "auto";
+  # };
 
-  services.udiskie = {
-      enable = true;
-      automount = false;
-      notify = true;
-      tray = "auto";
-  };
-
-  services.syncthing = {
-    enable = true;
-    tray = true;
-  };
+  # services.syncthing = {
+  #   enable = true;
+  #   tray = true;
+  # };
 
   # services.emacs.enable = true;
-  programs.emacs = {
-    enable = true;
-    extraPackages = (epkgs: (with epkgs.melpaPackages; [
-      nix-mode
-      magit
-      ace-window
-      ag
-      alchemist
-      all-the-icons
-      all-the-icons-dired
-      all-the-icons-ivy
-      avy
-      avy-zap
-      base16-theme
-      bind-key
-      cider
-      clojure-mode
-      # clojure-mode-extra-font-locking
-      clojure-snippets
-      company
-      company-statistics
-      copy-as-format
-      counsel
-      counsel-projectile
-      epkgs.csv-mode
-      epkgs.darkroom
-      diff-hl
-      diminish
-      direnv
-      docker
-      docker-compose-mode
-      dockerfile-mode
-      docker-tramp
-      elixir-mode
-      epl
-      eredis
-      exec-path-from-shell
-      expand-region
-      flycheck
-      flycheck-mix
-      gh
-      gist
-      gitignore-mode
-      google-this
-      google-translate
-      haml-mode
-      haskell-mode
-      ht
-      htmlize
-      ivy
-      json-mode
-      json-reformat
-      json-snatcher
-      logito
-      # lua-mode
-      magit-popup
-      # magit-gh-pulls
-      magithub
-      forge
-      markdown-mode
-      marshal
-      memoize
-      no-littering
-      parseclj
-      parseedn
-      pcache
-      pkg-info
-      plantuml-mode
-      projectile
-      epkgs.queue
-      rainbow-delimiters
-      rainbow-identifiers
-      epkgs.rainbow-mode
-      restart-emacs
-      reverse-im
-      sesman
-      smart-comment
-      smartparens
-      epkgs.spinner
-      swiper
-      system-packages
-      tablist
-      toc-org
-      use-package
-      use-package-ensure-system-package
-      vue-mode
-      wakatime-mode
-      which-key
-      whole-line-or-region
-      yaml-mode
-      yasnippet
-      yasnippet-snippets
-      docker-tramp
-      counsel-tramp
-      py-autopep8
-      elpy
-      (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort rope pip setuptools redis celery flask ]))
-    ]));
-  };
+  # programs.emacs = {
+  #   enable = true;
+  #   extraPackages = (epkgs: (with epkgs.melpaPackages; [
+  #     nix-mode
+  #     magit
+  #     ace-window
+  #     ag
+  #     alchemist
+  #     all-the-icons
+  #     all-the-icons-dired
+  #     all-the-icons-ivy
+  #     avy
+  #     avy-zap
+  #     base16-theme
+  #     bind-key
+  #     cider
+  #     clojure-mode
+  #     # clojure-mode-extra-font-locking
+  #     clojure-snippets
+  #     company
+  #     company-statistics
+  #     copy-as-format
+  #     counsel
+  #     counsel-projectile
+  #     epkgs.csv-mode
+  #     epkgs.darkroom
+  #     diff-hl
+  #     diminish
+  #     direnv
+  #     docker
+  #     docker-compose-mode
+  #     dockerfile-mode
+  #     docker-tramp
+  #     elixir-mode
+  #     epl
+  #     eredis
+  #     exec-path-from-shell
+  #     expand-region
+  #     flycheck
+  #     flycheck-mix
+  #     gh
+  #     gist
+  #     gitignore-mode
+  #     google-this
+  #     google-translate
+  #     haml-mode
+  #     haskell-mode
+  #     ht
+  #     htmlize
+  #     ivy
+  #     json-mode
+  #     json-reformat
+  #     json-snatcher
+  #     logito
+  #     # lua-mode
+  #     magit-popup
+  #     # magit-gh-pulls
+  #     magithub
+  #     forge
+  #     markdown-mode
+  #     marshal
+  #     memoize
+  #     no-littering
+  #     parseclj
+  #     parseedn
+  #     pcache
+  #     pkg-info
+  #     plantuml-mode
+  #     projectile
+  #     epkgs.queue
+  #     rainbow-delimiters
+  #     rainbow-identifiers
+  #     epkgs.rainbow-mode
+  #     restart-emacs
+  #     reverse-im
+  #     sesman
+  #     smart-comment
+  #     smartparens
+  #     epkgs.spinner
+  #     swiper
+  #     system-packages
+  #     tablist
+  #     toc-org
+  #     use-package
+  #     use-package-ensure-system-package
+  #     vue-mode
+  #     wakatime-mode
+  #     which-key
+  #     whole-line-or-region
+  #     yaml-mode
+  #     yasnippet
+  #     yasnippet-snippets
+  #     docker-tramp
+  #     counsel-tramp
+  #     py-autopep8
+  #     elpy
+  #     (pkgs.python37.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort rope pip setuptools redis celery flask ]))
+  #   ]));
+  # };
 
-  programs.firefox = {
-    enable = true;
-    enableIcedTea = true;
-    enableGoogleTalk = true;
-  };
+  # programs.firefox = {
+  #   enable = true;
+  #   # enableIcedTea = true;
+  #   # enableGoogleTalk = true;
+  # };
 
-  programs.chromium = {
-    enable = true;
-  };
+  # programs.chromium = {
+  #   enable = true;
+  # };
 
   programs.rofi = {
     enable = true;
