@@ -218,13 +218,13 @@
     xset -dpms
     xset s off
     '';
-    windowManager.xmonad = {
-                         enable = true;
-                         enableContribAndExtras = true;
-                         extraPackages =  haskellPackages: [
-                                       haskellPackages.xmobar
-                                       ];
-                         };
+    # windowManager.xmonad = {
+    #                      enable = true;
+    #                      enableContribAndExtras = true;
+    #                      extraPackages =  haskellPackages: [
+    #                                    haskellPackages.xmobar
+    #                                    ];
+    #                      };
   };
 
   xresources = {

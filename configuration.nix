@@ -10,6 +10,8 @@
       /etc/nixos/hardware-configuration.nix
       ./xserver.nix
       ./emacs.nix
+      ./emacs-overlay.nix
+      # ./emacs-with-use-package.nix
       ./packages.nix
       ./containers.nix
       ./redshift.nix
@@ -85,6 +87,9 @@
   # '';
 
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {

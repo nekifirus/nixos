@@ -11,7 +11,9 @@
     xkbOptions = "grp:caps_toggle, grp_led:caps, terminate:ctr_alt_bksp";
     videoDrivers = [ "nvidia"];
     windowManager = {
-      exwm.enable = true;
+      exwm = {
+        enable = true;
+      };
       awesome.enable = true;
     };
 
