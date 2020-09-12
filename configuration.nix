@@ -68,6 +68,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = false;
+  services.dbus.enable = true;
 
   systemd.extraConfig = "DefaultStartLimitIntervalSec=2\nDefaultStartLimitBurst=20";
   # open ports in the firewall.

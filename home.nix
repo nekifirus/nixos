@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [
+    # ./home-gtk.nix
+    ./email.nix
+  ];
   # services.udiskie = {
   #     enable = true;
   #     automount = false;
@@ -212,6 +216,7 @@
       core = { editor = "emacsclient -c"; };
     };
   };
+
 
   xsession = {
     initExtra = ''

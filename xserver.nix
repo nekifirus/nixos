@@ -15,6 +15,7 @@
         enable = true;
       };
       awesome.enable = true;
+      stumpwm.enable = true;
     };
 
   };
