@@ -9,12 +9,14 @@
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
       ./xserver.nix
-      ./emacs.nix
-      ./emacs-overlay.nix
+      # ./emacs.nix
       # ./emacs-with-use-package.nix
       ./packages.nix
+      # ./emacs-overlay.nix
       ./containers.nix
       ./redshift.nix
+      ./fonts.nix
+      <home-manager/nixos>
     ];
 
   # boot.loader.grub.enable = true;
@@ -70,6 +72,10 @@
   services.openssh.enable = false;
   services.dbus.enable = true;
 
+  services.emacs.enable = true;
+  services.emacs.install = true;
+  services.emacs.defaultEditor = true;
+
   systemd.extraConfig = "DefaultStartLimitIntervalSec=2\nDefaultStartLimitBurst=20";
   # open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -104,7 +110,7 @@
         "postgres" ];
     };
   };
-
+  home-manager.users.nekifirus = import ./home.nix;
   powerManagement.cpuFreqGovernor = "ondemand";
 
   # Enable autoupgrade

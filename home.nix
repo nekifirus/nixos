@@ -4,6 +4,7 @@
   imports = [
     # ./home-gtk.nix
     ./email.nix
+    ./emacs.nix
   ];
   # services.udiskie = {
   #     enable = true;
@@ -143,11 +144,13 @@
             tmuxPlugins.yank
             tmuxPlugins.urlview
             tmuxPlugins.sensible
+            tmuxPlugins.resurrect
             {
               plugin = tmuxPlugins.continuum;
               extraConfig = ''
                 set -g @continuum-restore 'on'
                 set -g @continuum-save-interval '15' # minutes
+                set -g status-right '#{continuum_status}'
               '';
             }
           ];

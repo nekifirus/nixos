@@ -5,6 +5,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    gnutar
+    mu
     nixui
     abiword
     # adobe-reader

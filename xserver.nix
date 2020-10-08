@@ -9,7 +9,7 @@
     enable = true;
     layout = "us, ru";
     xkbOptions = "grp:caps_toggle, grp_led:caps, terminate:ctr_alt_bksp";
-    videoDrivers = [ "nvidia"];
+    videoDrivers = ["nvidia" "noveau"];
     windowManager = {
       exwm = {
         enable = true;
