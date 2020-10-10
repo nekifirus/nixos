@@ -142,6 +142,20 @@ in {
       yaml-mode
       yasnippet
       yasnippet-snippets
+      company-box
+      lsp-ui
+      lsp-ivy
+      pkgs.lua53Packages.lua-lsp
+      pkgs.rnix-lsp
+      pkgs.nodePackages_latest.typescript-language-server
+      pkgs.nodePackages_latest.vue-cli
+      pkgs.nodePackages_latest.vue-language-server
+      pkgs.nodePackages_latest.vscode-css-languageserver-bin
+      pkgs.nodePackages_latest.vscode-html-languageserver-bin
+      pkgs.nodePackages_latest.vscode-json-languageserver-bin
+      pkgs.nodePackages_latest.eslint
+      pkgs.nodePackages_latest.csslint
+      pkgs.python-language-server
       (pkgs.python38.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort pip setuptools redis flask ]))
     ];
   # ]));
