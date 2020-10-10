@@ -16,8 +16,8 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = [ "Inter" "Ubuntu" "Iosevka"  ];
-        sansSerif = [ "Inter" "Ubuntu" "Iosevka" ];
+        serif = [ "Ubuntu" "Iosevka"  ];
+        sansSerif = [ "Ubuntu" "Iosevka" ];
         monospace = [ "Iosevka Light" "IBM Plex Mono 13" ];
       };
     };

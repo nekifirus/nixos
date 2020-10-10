@@ -9,10 +9,7 @@
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
       ./xserver.nix
-      # ./emacs.nix
-      # ./emacs-with-use-package.nix
       ./packages.nix
-      # ./emacs-overlay.nix
       ./containers.nix
       ./redshift.nix
       ./fonts.nix
@@ -28,7 +25,8 @@
   # boot.loader.grub.version = 2;
   # Define on which hard drive you want to install Grub.
   #boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5001b448b9563d7d";
-  boot.kernelModules = [ "coretemp" "it87"];
+  boot.kernelModules = [ "coretemp" "igc" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # try to disable swap
   swapDevices = lib.mkForce [ ];
@@ -44,11 +42,17 @@
   # networking.proxy.noProxy = "127..0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  # i18n = {
-  #   consoleFont = "Lat2-Terminus16";
-  #   consoleKeyMap = "us";
-  #   defaultLocale = "en_US.UTF-8";
-  # };
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+  };
+
+  console = {
+    keyMap = "us";
+    font = "Lat2-Terminus16";
+  };
+
+  services.kmscon.enable = true;
+  services.kmscon.extraConfig = ''font-name=Iosevka Light'';
 
   # Set your time zone.
   time.timeZone = "Asia/Aqtobe";
