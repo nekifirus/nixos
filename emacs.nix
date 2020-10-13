@@ -39,6 +39,7 @@ in {
       xresources-theme
       frames-only-mode
       modus-vivendi-theme
+      modus-operandi-theme
       org-bullets
       multiple-cursors
       lsp-mode
@@ -156,7 +157,7 @@ in {
       pkgs.nodePackages_latest.eslint
       pkgs.nodePackages_latest.csslint
       pkgs.python-language-server
-      (pkgs.python38.withPackages (ps: with ps; [elpy jedi flake8 autopep8 isort pip setuptools redis flask ]))
+      (pkgs.python38.withPackages (ps: with ps; [python-language-server[all] elpy jedi flake8 autopep8 isort pip setuptools redis flask ]))
     ];
   # ]));
 }
