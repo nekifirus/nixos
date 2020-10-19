@@ -34,6 +34,7 @@ in {
   programs.emacs.extraPackages = epkgs:
     with epkgs; [
       # explain-pause-mode
+      pdf-tools
       try
       ibuffer-vc
       xresources-theme
