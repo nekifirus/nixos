@@ -26,7 +26,7 @@
   # Define on which hard drive you want to install Grub.
   #boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5001b448b9563d7d";
   boot.kernelModules = [ "coretemp" "igc" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # try to disable swap
   swapDevices = lib.mkForce [ ];
