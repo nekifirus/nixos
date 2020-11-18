@@ -98,6 +98,10 @@
   # '';
 
   virtualisation.docker.enable = true;
+
+  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemuPackage = pkgs.qemu_kvm;
+  
   # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
   # users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
@@ -111,6 +115,7 @@
         "wheel"
         "networkmanager"
         "docker"
+        "libvirtd"
         "postgres" ];
     };
   };
