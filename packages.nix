@@ -14,6 +14,9 @@
     # adobe-reader
     ag
     chromium
+    clojure
+    leiningen
+    babashka
     direnv
     dmenu
     docker-compose
