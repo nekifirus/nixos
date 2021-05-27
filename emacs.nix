@@ -34,6 +34,9 @@ in {
   programs.emacs.extraPackages = epkgs:
     with epkgs; [
       # explain-pause-mode
+      poporg
+      go-mode
+      protobuf-mode
       mood-line
       pdf-tools
       try
@@ -51,7 +54,7 @@ in {
       exwm
       clojure-mode-extra-font-locking
       darkroom
-      csv-mode
+      # csv-mode
       pkgs.gnupg
       lua-mode
       # magit-gh-pulls
@@ -148,6 +151,7 @@ in {
       company-box
       lsp-ui
       lsp-ivy
+      pkgs.gopls
       pkgs.lua53Packages.lua-lsp
       pkgs.rnix-lsp
       pkgs.nodePackages_latest.typescript-language-server

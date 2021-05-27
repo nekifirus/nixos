@@ -190,6 +190,7 @@
 
   services.gpg-agent = {
     enable = true;
+    pinentryFlavor = null;
     defaultCacheTtl = 7200;
     enableSshSupport = true;
     sshKeys = [

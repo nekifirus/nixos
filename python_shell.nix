@@ -29,7 +29,7 @@ stdenv.mkDerivation {
     export PGDATA="$PWD/db"
 
     alias pip="PIP_PREFIX='$(pwd)/venv/lib/python3.7/site-packages' \pip"
-    export PYTHONPATH="$(pwd)/venv/lib/python3.7/site-packages:PYTHONPATH"
+    export PYTHONPATH="$(pwd)/venv/lib/python3.7/site-packages:$(pwd):$PYTHONPATH"
     unset SOURCE_DATE_EPOCH
     source venv/bin/activate
   '';

@@ -26,7 +26,7 @@
   # Define on which hard drive you want to install Grub.
   #boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5001b448b9563d7d";
   boot.kernelModules = [ "coretemp" "igc" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # try to disable swap
   swapDevices = lib.mkForce [ ];
@@ -73,7 +73,9 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = false;
+  services.openssh.enable = true;
+  services.openssh.passwordAuthentication = false;
+  services.openssh.permitRootLogin = "no";
   services.dbus.enable = true;
 
   services.emacs.enable = true;
