@@ -24,8 +24,8 @@ let
    };
 in {
 
-  # imports = [./emacs-overlay.nix];
-  home.packages = [ captureDesktopItem];
+  imports = [./emacs-overlay.nix];
+  home.packages = [ captureDesktopItem ];
 
   services.emacs.enable = true;
   # services.emacs.client.enable = true;
@@ -34,26 +34,28 @@ in {
   programs.emacs.extraPackages = epkgs:
     with epkgs; [
       # explain-pause-mode
+      org-roam
+      pkgs.sqlite
+      pkgs.ripgrep
       poporg
       go-mode
       protobuf-mode
       mood-line
       pdf-tools
-      try
+      # try
       ibuffer-vc
       xresources-theme
-      frames-only-mode
+      # frames-only-mode
       modus-vivendi-theme
       modus-operandi-theme
       org-bullets
       multiple-cursors
       lsp-mode
-      company-lsp
       # notmuch
       pkgs.mu
-      exwm
-      clojure-mode-extra-font-locking
-      darkroom
+      # exwm
+      # clojure-mode-extra-font-locking
+      # darkroom
       # csv-mode
       pkgs.gnupg
       lua-mode
@@ -88,7 +90,7 @@ in {
       elixir-mode
       elpy
       epl
-      eredis
+      # eredis
       exec-path-from-shell
       expand-region
       flycheck
@@ -107,7 +109,7 @@ in {
       json-mode
       json-reformat
       json-snatcher
-      logito
+      # logito
       magit
       magit-popup
       # magithub
@@ -154,14 +156,14 @@ in {
       pkgs.gopls
       pkgs.lua53Packages.lua-lsp
       pkgs.rnix-lsp
-      pkgs.nodePackages_latest.typescript-language-server
-      pkgs.nodePackages_latest.vue-cli
-      pkgs.nodePackages_latest.vue-language-server
-      pkgs.nodePackages_latest.vscode-css-languageserver-bin
-      pkgs.nodePackages_latest.vscode-html-languageserver-bin
-      pkgs.nodePackages_latest.vscode-json-languageserver-bin
-      pkgs.nodePackages_latest.eslint
-      pkgs.nodePackages_latest.csslint
+      # pkgs.nodePackages_latest.typescript-language-server
+      # pkgs.nodePackages_latest.vue-cli
+      # pkgs.nodePackages_latest.vue-language-server
+      # pkgs.nodePackages_latest.vscode-css-languageserver-bin
+      # pkgs.nodePackages_latest.vscode-html-languageserver-bin
+      # pkgs.nodePackages_latest.vscode-json-languageserver-bin
+      # pkgs.nodePackages_latest.eslint
+      # pkgs.nodePackages_latest.csslint
       pkgs.python-language-server
       (pkgs.python38.withPackages (ps: with ps; [python-language-server[all] elpy jedi flake8 autopep8 isort pip setuptools redis flask ]))
     ];

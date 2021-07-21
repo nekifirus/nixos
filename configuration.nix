@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./k3s.nix
       ./xserver.nix
       ./packages.nix
       ./containers.nix
@@ -100,7 +101,8 @@
   # '';
 
   virtualisation.docker.enable = true;
-
+  virtualisation.docker.extraOptions = "--data-root /home/nekifirus/docker";
+  
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemuPackage = pkgs.qemu_kvm;
   

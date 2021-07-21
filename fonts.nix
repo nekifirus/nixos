@@ -11,7 +11,7 @@
       emacs-all-the-icons-fonts
       pkgs.ubuntu_font_family
     ];
-    enableFontDir = true;
+    fontDir.enable = true;
     enableGhostscriptFonts = true;
     fontconfig = {
       enable = true;
