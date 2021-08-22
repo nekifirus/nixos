@@ -33,7 +33,6 @@ in {
   # programs.emacs.package = pkgs.emacsUnstable;
   programs.emacs.extraPackages = epkgs:
     with epkgs; [
-      # explain-pause-mode
       org-roam
       pkgs.sqlite
       pkgs.ripgrep
@@ -42,27 +41,16 @@ in {
       protobuf-mode
       mood-line
       pdf-tools
-      # try
       ibuffer-vc
       xresources-theme
-      # frames-only-mode
-      modus-vivendi-theme
-      modus-operandi-theme
       org-bullets
       multiple-cursors
       lsp-mode
       # notmuch
       pkgs.mu
-      # exwm
-      # clojure-mode-extra-font-locking
-      # darkroom
-      # csv-mode
       pkgs.gnupg
       lua-mode
-      # magit-gh-pulls
-      ace-window
       ag
-      alchemist
       all-the-icons
       all-the-icons-dired
       all-the-icons-ivy
@@ -70,11 +58,7 @@ in {
       avy-zap
       base16-theme
       bind-key
-      cider
-      clojure-mode
-      clojure-snippets
       company
-      company-statistics
       copy-as-format
       counsel
       counsel-projectile
@@ -83,46 +67,21 @@ in {
       diminish
       direnv
       dired-du
-      docker
-      docker-compose-mode
-      docker-tramp
       dockerfile-mode
       elixir-mode
-      elpy
       epl
-      # eredis
-      exec-path-from-shell
       expand-region
       flycheck
-      # flycheck-mix
-      # forge
-      gh
-      gist
       gitignore-mode
       google-this
       google-translate
-      haml-mode
-      haskell-mode
-      ht
-      htmlize
       ivy
-      json-mode
-      json-reformat
-      json-snatcher
-      # logito
       magit
       magit-popup
-      # magithub
       markdown-mode
-      marshal
-      memoize
       nix-mode
       no-littering
       org-plus-contrib
-      parseclj
-      parseedn
-      pcache
-      pkg-info
       plantuml-mode
       projectile
       ibuffer-projectile
@@ -132,19 +91,15 @@ in {
       rainbow-delimiters
       rainbow-identifiers
       rainbow-mode
-      restart-emacs
       reverse-im
-      sesman
       smart-comment
       smartparens
       swiper
       system-packages
-      tablist
       toc-org
       use-package
       use-package-ensure-system-package
       vue-mode
-      wakatime-mode
       which-key
       whole-line-or-region
       yaml-mode
@@ -153,19 +108,9 @@ in {
       company-box
       lsp-ui
       lsp-ivy
-      pkgs.gopls
-      pkgs.lua53Packages.lua-lsp
       pkgs.rnix-lsp
-      # pkgs.nodePackages_latest.typescript-language-server
-      # pkgs.nodePackages_latest.vue-cli
-      # pkgs.nodePackages_latest.vue-language-server
-      # pkgs.nodePackages_latest.vscode-css-languageserver-bin
-      # pkgs.nodePackages_latest.vscode-html-languageserver-bin
-      # pkgs.nodePackages_latest.vscode-json-languageserver-bin
-      # pkgs.nodePackages_latest.eslint
-      # pkgs.nodePackages_latest.csslint
       pkgs.python-language-server
-      (pkgs.python38.withPackages (ps: with ps; [python-language-server[all] elpy jedi flake8 autopep8 isort pip setuptools redis flask ]))
+      (pkgs.python38.withPackages (ps: with ps; [python-language-server[all] flake8 autopep8 isort pip setuptools ]))
     ];
   # ]));
 }

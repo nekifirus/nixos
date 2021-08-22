@@ -12,10 +12,10 @@
     videoDrivers = ["nvidia" "noveau"];
     windowManager = {
       exwm = {
-        enable = true;
+        enable = false;
       };
       awesome.enable = true;
-      stumpwm.enable = true;
+      stumpwm.enable = false;
     };
 
   };

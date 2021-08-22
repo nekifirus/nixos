@@ -20,7 +20,7 @@ stdenv.mkDerivation {
     postgresql
     python38Packages.pip
     python38Packages.celery
-    (python38.withPackages (ps: with ps; [python-language-server redis requests jedi isort flake8 autopep8 celery]))
+    (python38.withPackages (ps: with ps; [python-language-server cookiecutter redis requests jedi isort flake8 autopep8 celery]))
   ];
 
   shellHook = ''

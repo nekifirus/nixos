@@ -8,23 +8,15 @@
 
   environment.systemPackages = with pkgs; [
     inkscape
-    # gimp-with-plugins
     gnutar
     mu
-    nixui
     abiword
-    # adobe-reader
     ag
     chromium
-    clojure
-    leiningen
-    babashka
     direnv
     dmenu
     docker-compose
-    edbrowse
     elinks
-    epiphany
     firefox
     fortune
     gcc
@@ -34,10 +26,9 @@
     gnumake
     gnupg
     heroku
-    home-manager
+    # home-manager
     htop
     ispell
-    jupyter
     libffi.dev
     lm_sensors
     lxappearance
@@ -49,25 +40,16 @@
     postgresql
     pptp
     pulsemixer
-    qutebrowser
     redis
     scrot
     skype
     slack
-    surf
-    surfraw
     tdesktop
-    traceroute
-    telnet
     tmux
     unzip
-    urlview
     usbutils
     vim
     wget
-    xclip
-    xmobar
-    xsel
     zoom-us
   ];
 }
