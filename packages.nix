@@ -7,6 +7,10 @@
   # environment.variables = { GOROOT = [ "${pkgs.go.out}/share/go" ]; };
 
   environment.systemPackages = with pkgs; [
+    conky
+    gnutar
+    electrum
+    cryptsetup
     inkscape
     gnutar
     mu
