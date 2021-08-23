@@ -50,7 +50,7 @@ in {
       org-bullets
       multiple-cursors
       lsp-mode
-      # notmuch
+      notmuch
       pkgs.mu
       pkgs.gnupg
       lua-mode
