@@ -11,7 +11,7 @@
       ./dwm/dragmfact.patch
       ./dwm/fakefullscreen.patch
       ./dwm/pertag.patch
-      # ./dwm/systray.patch
+      # ./dwm/nsystray.patch
     ];
   };
 }
