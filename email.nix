@@ -30,7 +30,8 @@
         '';
         showSignature = "append";
       };
-      passwordCommand = "gpg2 -q -d ~/.authinfo.gpg | awk 'FNR == 2 {print $6}'";
+      passwordCommand = "pass email/gmail.app-pass";
+      # passwordCommand = "gpg2 -q -d ~/.authinfo.gpg | awk 'FNR == 2 {print $6}'";
       smtp = {
         host = "smtp.gmail.com";
       };
