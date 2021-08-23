@@ -33,6 +33,10 @@ in {
   # programs.emacs.package = pkgs.emacsUnstable;
   programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      pkgs.imagemagick
+      pkgs.ffmpeg-full
+      pkgs.x265
+      telega
       org-roam
       pkgs.sqlite
       pkgs.ripgrep
