@@ -7,6 +7,7 @@
   # environment.variables = { GOROOT = [ "${pkgs.go.out}/share/go" ]; };
 
   environment.systemPackages = with pkgs; [
+    graphviz
     conky
     gnutar
     electrum

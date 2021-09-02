@@ -37,5 +37,35 @@
       };
       userName = "nekifirus@gmail.com";
     };
+    accounts.nekifirus-yandex = {
+      address = "nekifirus@yandex.ru";
+      gpg = {
+        key = "nekifirus@gmail.com";
+        signByDefault = true;
+      };
+      imap.host = "imap.yandex.ru";
+      imap.port = 993;
+      mbsync = {
+        enable = true;
+        create = "maildir";
+        expunge = "both";
+      };
+      msmtp.enable = true;
+      notmuch.enable = true;
+      primary = false;
+      realName = "Nikita Mistyukov";
+      signature = {
+        text = ''
+        '';
+        showSignature = "append";
+      };
+      passwordCommand = "pass email/yandex.app-pass";
+      # passwordCommand = "gpg2 -q -d ~/.authinfo.gpg | awk 'FNR == 2 {print $6}'";
+      smtp = {
+        host = "smtp.yandex.ru";
+        port = 465;
+      };
+      userName = "nekifirus@yandex.ru";
+    };
   };
 }
