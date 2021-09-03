@@ -12,7 +12,8 @@ stdenv.mkDerivation {
     bash
     glibc.static
     cmake
-    (python39.withPackages (ps: with ps; [pip]))
+    tk
+    (python39Full.withPackages (ps: with ps; [pip]))
   ];
 
   shellHook = ''

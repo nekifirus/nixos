@@ -46,7 +46,13 @@
   time.hardwareClockInLocalTime = false;
 
   nixpkgs.config.allowUnfree = true;
-
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+   };
+  
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;

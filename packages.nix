@@ -19,6 +19,7 @@
     ag
     chromium
     direnv
+    nix-direnv
     dmenu
     docker-compose
     elinks
