@@ -24,11 +24,9 @@ let
    };
 in {
 
-  # imports = [./emacs-overlay.nix];
   home.packages = [ captureDesktopItem ];
 
   services.emacs.enable = true;
-  # services.emacs.client.enable = true;
   programs.emacs.enable = true;
   # programs.emacs.package = pkgs.emacsUnstable;
   programs.emacs.extraPackages = epkgs:

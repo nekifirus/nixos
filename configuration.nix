@@ -8,13 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ./k3s.nix
       ./xserver.nix
       ./packages.nix
-      # ./containers.nix          
       ./redshift.nix
       ./fonts.nix
-      # <home-manager/nixos>
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -46,12 +43,6 @@
   time.hardwareClockInLocalTime = false;
 
   nixpkgs.config.allowUnfree = true;
-  # nix = {
-  #   package = pkgs.nixUnstable;
-  #   extraOptions = ''
-  #     experimental-features = nix-command flakes
-  #   '';
-  #  };
   
   programs.gnupg.agent = {
     enable = true;

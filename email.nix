@@ -31,7 +31,6 @@
         showSignature = "append";
       };
       passwordCommand = "pass email/gmail.app-pass";
-      # passwordCommand = "gpg2 -q -d ~/.authinfo.gpg | awk 'FNR == 2 {print $6}'";
       smtp = {
         host = "smtp.gmail.com";
       };
@@ -60,7 +59,6 @@
         showSignature = "append";
       };
       passwordCommand = "pass email/yandex.app-pass";
-      # passwordCommand = "gpg2 -q -d ~/.authinfo.gpg | awk 'FNR == 2 {print $6}'";
       smtp = {
         host = "smtp.yandex.ru";
         port = 465;

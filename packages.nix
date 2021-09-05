@@ -4,7 +4,6 @@
 {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.variables = { GOROOT = [ "${pkgs.go.out}/share/go" ]; };
 
   environment.systemPackages = with pkgs; [
     graphviz
