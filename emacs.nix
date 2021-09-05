@@ -24,7 +24,7 @@ let
    };
 in {
 
-  imports = [./emacs-overlay.nix];
+  # imports = [./emacs-overlay.nix];
   home.packages = [ captureDesktopItem ];
 
   services.emacs.enable = true;

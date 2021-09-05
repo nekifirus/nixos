@@ -14,7 +14,7 @@
       # ./containers.nix          
       ./redshift.nix
       ./fonts.nix
-      <home-manager/nixos>
+      # <home-manager/nixos>
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -46,12 +46,12 @@
   time.hardwareClockInLocalTime = false;
 
   nixpkgs.config.allowUnfree = true;
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-   };
+  # nix = {
+  #   package = pkgs.nixUnstable;
+  #   extraOptions = ''
+  #     experimental-features = nix-command flakes
+  #   '';
+  #  };
   
   programs.gnupg.agent = {
     enable = true;

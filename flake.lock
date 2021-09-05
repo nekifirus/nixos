@@ -1,5 +1,16 @@
 {
   "nodes": {
+    "emacs-overlay": {
+      "locked": {
+        "narHash": "sha256-fAYpm4D4I8A26JvbvApG98g3KnSJKh0+slBK+9SGC6s=",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/abc392cf4bd06dfa7b08fece4982445f845fbbe4.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/abc392cf4bd06dfa7b08fece4982445f845fbbe4.tar.gz"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -39,6 +50,7 @@
     },
     "root": {
       "inputs": {
+        "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
