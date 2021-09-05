@@ -13,10 +13,10 @@
   #     tray = "auto";
   # };
 
-  # services.syncthing = {
-  #   enable = true;
-  #   tray = true;
-  # };
+  services.syncthing = {
+    enable = true;
+    tray.enable = true;
+  };
 
   # services.emacs.enable = true;
   # programs.emacs = {
