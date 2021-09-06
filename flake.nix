@@ -46,7 +46,7 @@
                nix.extraOptions = "experimental-features = nix-command flakes";
                nix.package = pkgs.nixFlakes;
                nix.registry.nixpkgs.flake = inputs.nixpkgs;
-          
+               nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
                home-manager.useGlobalPkgs = true;
              })
             ./emacs-overlay.nix

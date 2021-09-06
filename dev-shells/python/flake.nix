@@ -9,7 +9,11 @@
   outputs = { self, nixpkgs, utils }: (utils.lib.eachSystem ["x86_64-linux" ] (system: rec {
 
     packages = {
-      pythonEnv = nixpkgs.legacyPackages.${system}.python39Full.withPackages(ps: with ps; [ pip ]);
+      pythonEnv = nixpkgs.legacyPackages.${system}.python39Full.withPackages(ps: with ps; [
+        pip
+        (python-lsp-server.override { withPylint = false; })
+         isort
+	 ]);
     };
 
     defaultPackage = packages.pythonEnv; # If you want to juist build the environment
