@@ -112,8 +112,7 @@ in {
       lsp-ivy
       elpy
       pkgs.rnix-lsp
-      pkgs.python-language-server
-      (pkgs.python38.withPackages (ps: with ps; [python-language-server[all] elpy flake8 autopep8 isort pip setuptools ]))
+      (pkgs.python38.withPackages (ps: with ps; [python-lsp-server elpy flake8 autopep8 isort pip setuptools ]))
     ];
   # ]));
 }

@@ -119,7 +119,7 @@
   xresources = {
     properties = {
       "XTerm*font" = "*-fixed-*-*-*-*-*";
-      "XTerm*faceName" = "pango:monospace";
+      "XTerm*faceName" = "Iosevka Ligt";
       "XTerm*faceSize" = "12";
       "XTerm*termName" = "xterm-256color";
       "XTerm*metaSendsEscape" = true;
