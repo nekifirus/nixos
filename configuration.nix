@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./xserver.nix
       ./packages.nix
@@ -17,8 +18,8 @@
   services.yggdrasil = {
     enable = false;
     persistentKeys = false;
-      # The NixOS module will generate new keys and a new IPv6 address each time
-      # it is started if persistentKeys is not enabled.
+    # The NixOS module will generate new keys and a new IPv6 address each time
+    # it is started if persistentKeys is not enabled.
 
     config = {
       Peers = [
@@ -42,7 +43,7 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # try to disable swap
-  swapDevices = lib.mkForce [ ];
+  swapDevices = lib.mkForce [];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -65,7 +66,7 @@
   time.hardwareClockInLocalTime = false;
 
   nixpkgs.config.allowUnfree = true;
-  
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -96,10 +97,10 @@
 
   virtualisation.docker.enable = true;
   virtualisation.docker.extraOptions = "--data-root /home/nekifirus/docker";
-  
+
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemuPackage = pkgs.qemu_kvm;
-  
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     nekifirus = {
@@ -110,7 +111,8 @@
         "networkmanager"
         "docker"
         "libvirtd"
-        "postgres" ];
+        "postgres"
+      ];
     };
   };
   home-manager.users.nekifirus = import ./home.nix;
