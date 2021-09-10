@@ -18,8 +18,15 @@
   
   programs.rofi = {
     enable = true;
+    extraConfig = {
+      modi = "combi,window,drun,run,ssh,windowcd,keys";
+      font = "mono 18";
+      show-icons = true;
+      combi-modi = "window,drun,run";
+      theme = "gruvbox-dark-hard";
+    };
   };
-
+  
   programs.tmux = {
     enable = true;
     tmuxp.enable = true;
@@ -49,29 +56,13 @@
     historyControl = ["erasedups"];
     historyIgnore = ["ls" "cd" "exit"];
     sessionVariables = {};
-    shellAliases = {};
+    shellAliases = {
+      ls = "exa --group-directories-first";
+    };
     bashrcExtra = ''
-      case "$TERM" in
-     "dumb")
-          unsetopt zle
-          unsetopt prompt_cr
-          unsetopt prompt_subst
-          unfunction precmd
-          unfunction preexec
-          PS1="> "                # Tramp hangs #3
-          ;;
-     xterm*|rxvt*|eterm*|screen*)
-          PS1="\u@\h:\W: $  "
-          ;;
-     linux*)
-          PS1="\u@\h:\W: $  "
-          ;;
-     *)
-          PS1="> "
-          ;;
-      esac
-
+      PS1="\W: $  "
       eval "$(direnv hook bash)"
+      neofetch
     '';
   };
 

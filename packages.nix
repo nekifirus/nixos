@@ -6,6 +6,8 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
+    exa
+    neofetch
     graphviz
     conky
     gnutar
