@@ -104,6 +104,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     nekifirus = {
+      shell = pkgs.fish;
       isNormalUser = true;
       uid = 1000;
       extraGroups = [
