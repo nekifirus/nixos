@@ -6,6 +6,9 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
+    qutebrowser
+    surf
+    du-dust
     exa
     neofetch
     graphviz
