@@ -6,6 +6,7 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
+    # ethminer
     qutebrowser
     surf
     du-dust

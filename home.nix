@@ -63,21 +63,21 @@
     };
   };
 
-  programs.bash = {
-    enable = true;
-    historySize = 10000;
-    historyControl = ["erasedups"];
-    historyIgnore = ["ls" "cd" "exit"];
-    sessionVariables = {};
-    shellAliases = {
-      ls = "exa --group-directories-first";
-    };
-    bashrcExtra = ''
-      PS1="\W: $  "
-      eval "$(direnv hook bash)"
-      neofetch
-    '';
-  };
+  # programs.bash = {
+  #   enable = false;
+  #   historySize = 10000;
+  #   historyControl = ["erasedups"];
+  #   historyIgnore = ["ls" "cd" "exit"];
+  #   sessionVariables = {};
+  #   shellAliases = {
+  #     ls = "exa --group-directories-first";
+  #   };
+  #   bashrcExtra = ''
+  #     PS1="\W: $  "
+  #     eval "$(direnv hook bash)"
+  #     neofetch
+  #   '';
+  # };
 
   programs.fish = {
     enable = true;
@@ -94,16 +94,16 @@
     ];
   };
 
-  services.sxhkd = {
-    enable = true;
-    keybindings = {
-      "super + shift + p" = "passmenu";
-      "super + p" = "rofi -show combi -theme dmenu";
-      "super + a" = "emacsclient -nc";
-      "Print" = "sleep 0.5 && scrot -s '%Y-%m-%d-%H:%M:%S_$wx$h_scrot.png' -e 'mv -n $f ~/scshots/'";
-      "super + Print" = "scrot '%Y-%m-%d-%H:%M:%S_scrot.png' -e 'mv -n $f ~/scshots/'";
-    };
-  };
+  # services.sxhkd = {
+  #   enable = true;
+  #   keybindings = {
+  #     "super + shift + p" = "passmenu";
+  #     "super + p" = "rofi -show combi -theme dmenu";
+  #     "super + a" = "emacsclient -nc";
+  #     "Print" = "sleep 0.5 && scrot -s '%Y-%m-%d-%H:%M:%S_$wx$h_scrot.png' -e 'mv -n $f ~/scshots/'";
+  #     "super + Print" = "scrot '%Y-%m-%d-%H:%M:%S_scrot.png' -e 'mv -n $f ~/scshots/'";
+  #   };
+  # };
 
   services.gpg-agent = {
     enable = true;
