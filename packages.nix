@@ -2,11 +2,8 @@
 
 
 {
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-
   environment.systemPackages = with pkgs; [
-    # ethminer
+    vlc
     qutebrowser
     surf
     du-dust
@@ -19,7 +16,6 @@
     cryptsetup
     inkscape
     gnutar
-    mu
     abiword
     ag
     chromium
@@ -31,13 +27,9 @@
     firefox
     fortune
     gcc
-    git
-    gitAndTools.git-extras
     gmrun
     gnumake
-    gnupg
     heroku
-    # home-manager
     htop
     ispell
     libffi.dev

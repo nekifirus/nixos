@@ -6,7 +6,8 @@
     in {
       packages.x86_64-linux.rnix-lsp = pkgs.rnix-lsp;
       devShell.x86_64-linux =  pkgs.mkShell {
-        buildInputs = [ self.packages.x86_64-linux.rnix-lsp ]; };
-
+        buildInputs = [ self.packages.x86_64-linux.rnix-lsp ];
+        shellHook = "echo PATH";
+      };
   };
 }

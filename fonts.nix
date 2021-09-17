@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   fonts = {
@@ -9,7 +9,7 @@
       iosevka
       source-code-pro
       emacs-all-the-icons-fonts
-      pkgs.ubuntu_font_family
+      ubuntu_font_family
     ];
     fontDir.enable = true;
     enableGhostscriptFonts = true;

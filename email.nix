@@ -1,13 +1,18 @@
 { pkgs, ... }:
+
 {
-  programs.mbsync.enable = true;
-  programs.msmtp.enable = true;
-  programs.notmuch = {
-    enable = true;
-    hooks = {
-      preNew = "mbsync --all";
+  programs = {
+    mu.enable = true;
+    mbsync.enable = true;
+    msmtp.enable = true;
+    notmuch = {
+      enable = true;
+      hooks = {
+        preNew = "mbsync --all";
+      };
     };
   };
+  
   accounts.email = {
     accounts.nekifirus = {
       address = "nekifirus@gmail.com";

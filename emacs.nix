@@ -49,8 +49,8 @@ in {
       multiple-cursors
       lsp-mode
       notmuch
-      pkgs.mu
-      pkgs.gnupg
+      # pkgs.mu
+      # pkgs.gnupg
       lua-mode
       ag
       all-the-icons
@@ -110,9 +110,6 @@ in {
       company-box
       lsp-ui
       lsp-ivy
-      elpy
-      pkgs.rnix-lsp
-      # (pkgs.python38.withPackages (ps: with ps; [python-lsp-server elpy flake8 autopep8 isort pip setuptools ]))
     ];
   # ]));
 }
