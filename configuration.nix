@@ -55,11 +55,11 @@
 
   # nixpkgs.config.allowUnfree = true;
 
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  #   pinentryFlavor = "gtk2";
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "gtk2";
+  };
 
   programs.slock.enable = true;
   programs.nm-applet.enable = true;
@@ -75,9 +75,9 @@
     dbus.enable = true;
   };
   
-  services.emacs.enable = true;
-  services.emacs.install = true;
-  services.emacs.defaultEditor = true;
+  # services.emacs.enable = true;
+  # services.emacs.install = true;
+  # services.emacs.defaultEditor = true;
 
   systemd.extraConfig = "DefaultStartLimitIntervalSec=2\nDefaultStartLimitBurst=20";
 
