@@ -9,7 +9,7 @@
     ./git.nix
     ./rofi.nix
     ./alacritty.nix
-    ./fish.nix
+    ./bash.nix
     ./xresources.nix
   ];
 

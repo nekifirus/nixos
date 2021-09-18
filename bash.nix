@@ -2,7 +2,7 @@
 
 {
   programs.bash = {
-    enable = false;
+    enable = true;
     historySize = 10000;
     historyControl = ["erasedups"];
     historyIgnore = ["ls" "cd" "exit"];

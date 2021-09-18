@@ -53,14 +53,6 @@
   time.timeZone = "Asia/Aqtobe";
   time.hardwareClockInLocalTime = false;
 
-  # nixpkgs.config.allowUnfree = true;
-
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryFlavor = "gtk2";
-  };
-
   programs.slock.enable = true;
   programs.nm-applet.enable = true;
   # List services that you want to enable:
@@ -75,10 +67,6 @@
     dbus.enable = true;
   };
   
-  # services.emacs.enable = true;
-  # services.emacs.install = true;
-  # services.emacs.defaultEditor = true;
-
   systemd.extraConfig = "DefaultStartLimitIntervalSec=2\nDefaultStartLimitBurst=20";
 
   # Enable sound.
@@ -100,7 +88,6 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     nekifirus = {
-      shell = pkgs.fish;
       isNormalUser = true;
       uid = 1000;
       extraGroups = [
