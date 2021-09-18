@@ -2,7 +2,7 @@
 
 {
   services.yggdrasil = {
-    enable = true;
+    enable = false;
     persistentKeys = false;
       # The NixOS module will generate new keys and a new IPv6 address each time
       # it is started if persistentKeys is not enabled.
