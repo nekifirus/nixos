@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  programs = {
+  home-manager.users.nekifirus.programs = {
     mu.enable = true;
     mbsync.enable = true;
     msmtp.enable = true;
@@ -13,7 +13,7 @@
     };
   };
   
-  accounts.email = {
+  home-manager.users.nekifirus.accounts.email = {
     accounts.nekifirus = {
       address = "nekifirus@gmail.com";
       gpg = {

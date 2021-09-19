@@ -20,6 +20,29 @@
           inputs.home-manager.nixosModules.home-manager
           ./nix_config.nix
           ./configuration.nix
+          ./alacritty.nix
+          ./hardware-configuration.nix
+          ./xserver.nix
+          ./packages.nix
+          ./redshift.nix
+          ./fonts.nix
+          ./yggdrasil.nix
+          ./locale.nix
+          ./email.nix
+          ./emacs.nix
+          ./gpg.nix
+          ./tmux.nix
+          ./git.nix
+          ./rofi.nix
+          ./bash.nix
+          ./xresources.nix
+          ./syncthing.nix
+          ./direnv.nix
+          ./ssh.nix
+          ./virtualisation.nix
+          ./network_manager.nix
+          ./openvpn.nix
+          ./sound.nix
         ];
       };
     };

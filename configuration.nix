@@ -7,13 +7,6 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./xserver.nix
-      ./packages.nix
-      ./redshift.nix
-      ./fonts.nix
-      ./yggdrasil.nix
     ];
 
   boot = {
@@ -26,64 +19,11 @@
 
   networking = {
     hostName = "nixos"; # Define your hostname.
-    networkmanager.enable = true;
-    dhcpcd.denyInterfaces = [ "docker*" "ve*" "br*" ];
-    firewall.connectionTrackingModules = [ "pptp" ];
   };
   services.avahi.ipv4 = false;
-
-  services.openvpn.servers = {
-    firstVPN  = {
-      config = '' config /root/vpn/first_vpn.conf '';
-      updateResolvConf = true;
-    };
-  };
-
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-  };
-
-  console = {
-    keyMap = "us";
-    font = "Lat2-Terminus16";
-  };
-
-  # Set your time zone.
-  time.timeZone = "Asia/Aqtobe";
-  time.hardwareClockInLocalTime = false;
-
-  programs.slock.enable = true;
-  programs.nm-applet.enable = true;
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services = {
-    openssh = {
-      enable = false;
-      passwordAuthentication = false;
-      permitRootLogin = "no";
-    };
-    dbus.enable = true;
-  };
+  services.dbus.enable = true;
   
   systemd.extraConfig = "DefaultStartLimitIntervalSec=2\nDefaultStartLimitBurst=20";
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      extraOptions = "--data-root /home/nekifirus/docker";
-    };
-
-    libvirtd = {
-      enable = true;
-      qemuPackage = pkgs.qemu_kvm;
-    };
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
@@ -99,7 +39,6 @@
       ];
     };
   };
-  home-manager.users.nekifirus = import ./home.nix;
   powerManagement.cpuFreqGovernor = "ondemand";
 
   # This value determines the NixOS release with which your system is to be

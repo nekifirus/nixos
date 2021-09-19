@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  services.gpg-agent = {
+  home-manager.users.nekifirus.services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 7200;
     enableSshSupport = true;
@@ -17,10 +17,10 @@
   };
 
   # prevent clobbering SSH_AUTH_SOCK
-  home.sessionVariables.GSM_SKIP_SSH_AGENT_WORKAROUND = "1";
+  home-manager.users.nekifirus.home.sessionVariables.GSM_SKIP_SSH_AGENT_WORKAROUND = "1";
 
   # Disable gnome-keyring ssh-agent
-  xdg.configFile."autostart/gnome-keyring-ssh.desktop".text = ''
+  home-manager.users.nekifirus.xdg.configFile."autostart/gnome-keyring-ssh.desktop".text = ''
     ${lib.fileContents "${pkgs.gnome3.gnome-keyring}/etc/xdg/autostart/gnome-keyring-ssh.desktop"}
     Hidden=true
   '';

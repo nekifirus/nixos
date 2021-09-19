@@ -1,7 +1,7 @@
 { pkgs, ...}:
 
 {
-  programs.bash = {
+  home-manager.users.nekifirus.programs.bash = {
     enable = true;
     historySize = 10000;
     historyControl = ["erasedups"];

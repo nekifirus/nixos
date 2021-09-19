@@ -1,7 +1,7 @@
 { pkgs, ...}:
 
 {
-  programs.tmux = {
+  home-manager.users.nekifirus.programs.tmux = {
     enable = true;
     tmuxp.enable = true;
     extraConfig = ''

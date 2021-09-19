@@ -1,35 +1,35 @@
 { config, pkgs, lib, ... }:
 
-with lib;
+# with lib;
 
-let
-  cfg = config.services.emacs;
-  emacsCfg = config.programs.emacs;
-  emacsBinPath = "${emacsCfg.finalPackage}/bin";
+# let
+#   cfg = config.services.emacs;
+#   emacsCfg = config.programs.emacs;
+#   emacsBinPath = "${emacsCfg.finalPackage}/bin";
 
-  captureDesktopItem = pkgs.makeDesktopItem rec {
-    name = "emacscapture";
-    desktopName = "Emacs Capture";
-    genericName = "Text Editor";
-    comment = "Edit text";
-    mimeType ="x-scheme-handler/org-protocol";
-    exec = "${emacsBinPath}/emacsclient -u";
-    icon = "emacs";
-    type = "Application";
-    terminal = "false";
-    categories = "Utility;TextEditor;";
-    extraEntries = ''
-      StartupWMClass=Capture
-    '';
-   };
-in {
+#   captureDesktopItem = pkgs.makeDesktopItem rec {
+#     name = "emacscapture";
+#     desktopName = "Emacs Capture";
+#     genericName = "Text Editor";
+#     comment = "Edit text";
+#     mimeType ="x-scheme-handler/org-protocol";
+#     exec = "${emacsBinPath}/emacsclient -u";
+#     icon = "emacs";
+#     type = "Application";
+#     terminal = "false";
+#     categories = "Utility;TextEditor;";
+#     extraEntries = ''
+#       StartupWMClass=Capture
+#     '';
+#    };
+# in {
+{
+  # home-manager.users.nekifirus.home.packages = [ captureDesktopItem ];
 
-  home.packages = [ captureDesktopItem ];
-
-  services.emacs.enable = true;
-  programs.emacs.enable = true;
+  home-manager.users.nekifirus.services.emacs.enable = true;
+  home-manager.users.nekifirus.programs.emacs.enable = true;
   # programs.emacs.package = pkgs.emacsUnstable;
-  programs.emacs.extraPackages = epkgs:
+  home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
       pkgs.imagemagick
       pkgs.ffmpeg-full

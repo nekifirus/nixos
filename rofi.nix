@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  programs.rofi = {
+  home-manager.users.nekifirus.programs.rofi = {
     enable = true;
     extraConfig = {
       modi = "combi,window,drun,run,ssh,windowcd,keys";

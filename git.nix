@@ -1,9 +1,9 @@
 { pkgs, ...}:
 
 {
-  home.packages = with pkgs; [ git gitAndTools.git-extras ];
+  home-manager.users.nekifirus.home.packages = with pkgs; [ git gitAndTools.git-extras ];
 
-  programs.git = {
+  home-manager.users.nekifirus.programs.git = {
     enable = true;
     userName = "Nikita Mistyukov";
     userEmail = "nekifirus@gmail.com";

@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  xresources = {
+  home-manager.users.nekifirus.xresources = {
     properties = {
       "XTerm*font" = "*-fixed-*-*-*-*-*";
       "XTerm*faceName" = "Iosevka Ligt";
