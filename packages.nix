@@ -3,56 +3,17 @@
 
 {
   environment.systemPackages = with pkgs; [
-    vlc
-    qutebrowser
-    surf
-    du-dust
-    exa
-    neofetch
-    graphviz
-    conky
-    gnutar
-    electrum
     cryptsetup
-    inkscape
-    gnutar
-    abiword
-    ag
-    chromium
-    direnv
-    nix-direnv
-    dmenu
-    docker-compose
-    elinks
-    firefox
-    fortune
     gcc
-    gmrun
     gnumake
     heroku
-    htop
-    ispell
     libffi.dev
     lm_sensors
-    lxappearance
-    networkmanagerapplet
     ntfs3g
     openssl.dev
     pass
-    pavucontrol
     postgresql
-    pptp
-    pulsemixer
     redis
-    scrot
-    skype
-    slack
-    tdesktop
-    tmux
-    unzip
     usbutils
-    vim
-    wget
-    zoom-us
   ];
 }

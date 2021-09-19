@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 
 {
@@ -10,4 +10,19 @@
     videoDrivers = ["nvidia" "noveau"];
     windowManager.awesome.enable = true;
   };
+  home-manager.users.nekifirus.home.packages = with pkgs; [
+    conky
+    electrum
+    inkscape
+    abiword
+    dmenu
+    lxappearance
+    scrot
+    skype
+    slack
+    tdesktop
+    zoom-us
+    gmrun
+    
+  ];
 }

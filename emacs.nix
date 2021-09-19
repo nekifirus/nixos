@@ -25,19 +25,26 @@
 # in {
 {
   # home-manager.users.nekifirus.home.packages = [ captureDesktopItem ];
+  home-manager.users.nekifirus.home.packages = with pkgs; [
+     imagemagick
+     ffmpeg-full
+     x265
+     sqlite
+     ripgrep
+     ag
+     ispell
+     unzip
+     gnutar
+     graphviz
+  ];
 
   home-manager.users.nekifirus.services.emacs.enable = true;
   home-manager.users.nekifirus.programs.emacs.enable = true;
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
-      pkgs.imagemagick
-      pkgs.ffmpeg-full
-      pkgs.x265
       telega
       org-roam
-      pkgs.sqlite
-      pkgs.ripgrep
       poporg
       go-mode
       protobuf-mode
@@ -49,8 +56,6 @@
       multiple-cursors
       lsp-mode
       notmuch
-      # pkgs.mu
-      # pkgs.gnupg
       lua-mode
       ag
       all-the-icons

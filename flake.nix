@@ -43,6 +43,8 @@
           ./network_manager.nix
           ./openvpn.nix
           ./sound.nix
+          ./users.nix
+          ./browser.nix
         ];
       };
     };

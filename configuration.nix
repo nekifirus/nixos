@@ -24,21 +24,6 @@
   services.dbus.enable = true;
   
   systemd.extraConfig = "DefaultStartLimitIntervalSec=2\nDefaultStartLimitBurst=20";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = {
-    nekifirus = {
-      isNormalUser = true;
-      uid = 1000;
-      extraGroups = [
-        "wheel"
-        "networkmanager"
-        "docker"
-        "libvirtd"
-        "postgres"
-      ];
-    };
-  };
   powerManagement.cpuFreqGovernor = "ondemand";
 
   # This value determines the NixOS release with which your system is to be

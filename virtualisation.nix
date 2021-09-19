@@ -13,5 +13,6 @@
     };
  };
  networking.dhcpcd.denyInterfaces = [ "docker*" "ve*" "br*" ];
-
+  
+ environment.systemPackages = with pkgs; [  docker-compose ];
 }
