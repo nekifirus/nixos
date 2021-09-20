@@ -9,7 +9,7 @@
   };
 
 
-  outputs = inputs @ { self, nixpkgs, home-manager, emacs-overlay, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -17,7 +17,7 @@
           inherit inputs;
         };
         modules = [
-          inputs.home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
           ./nix_config.nix
           ./configuration.nix
           ./alacritty.nix

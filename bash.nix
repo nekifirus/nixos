@@ -21,10 +21,11 @@
     shellAliases = {
       ls = "exa --group-directories-first";
     };
+    shellOptions = [ "histappend"  "checkwinsize" "checkjobs"];
     bashrcExtra = ''
       PS1="\W: $  "
       eval "$(direnv hook bash)"
-      neofetch
     '';
+    initExtra = "neofetch";
   };
 }

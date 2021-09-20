@@ -19,6 +19,7 @@
 
   networking = {
     hostName = "nixos"; # Define your hostname.
+    nameservers = ["8.8.8.8"];
   };
   services.avahi.ipv4 = false;
   services.dbus.enable = true;
