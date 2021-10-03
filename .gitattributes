@@ -1,0 +1,1 @@
+user/email.nix filter=git-crypt diff=git-crypt

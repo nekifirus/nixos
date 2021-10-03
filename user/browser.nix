@@ -2,6 +2,7 @@
 
 {
   home-manager.users.nekifirus.home.packages = with pkgs; [
+    nyxt
     qutebrowser
     surf
     chromium

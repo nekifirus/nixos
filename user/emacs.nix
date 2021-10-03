@@ -75,6 +75,7 @@
       direnv
       dired-du
       dockerfile-mode
+      docker
       elixir-mode
       epl
       expand-region
