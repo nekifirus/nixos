@@ -15,6 +15,7 @@
     loader.efi.canTouchEfiVariables = true;
     kernelModules = [ "kvm-intel" "coretemp" "igc" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "uas" "sd_mod" ];
+    cleanTmpDir = true;
   };
 
    fileSystems."/" =

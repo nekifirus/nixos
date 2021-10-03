@@ -4,7 +4,7 @@
   home-manager.users.nekifirus.programs.ssh.enable = false;
   services = {
     openssh = {
-      enable = false;
+      enable = true;
       passwordAuthentication = false;
       permitRootLogin = "no";
     };

@@ -13,6 +13,35 @@
 
   outputs = inputs @ { self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
+      nixos-vps = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./vps-host.nix
+          ./secrets/vps-networking.nix
+
+          ./system/nix_config.nix
+          ./system/packages.nix
+          ./system/virtualisation.nix
+          ./system/yggdrasil.nix
+          ./system/locale.nix
+          ./system/users.nix
+          
+          ./user/email.nix
+          ./user/emacs.nix
+          ./user/gpg.nix
+          ./user/tmux.nix
+          ./user/git.nix
+          ./user/bash.nix
+          ./user/syncthing.nix
+          ./user/direnv.nix
+          ./user/ssh.nix
+         
+        ];
+      };
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
