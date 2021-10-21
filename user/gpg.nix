@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
+  home-manager.users.nekifirus.programs.ssh.enable = false;
   home-manager.users.nekifirus.programs.gpg.enable = true;
   home-manager.users.nekifirus.services.gpg-agent = {
     enable = true;

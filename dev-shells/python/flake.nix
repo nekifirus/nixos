@@ -11,10 +11,10 @@
       system: rec {
 
         packages = {
-          pythonEnv = nixpkgs.legacyPackages.${system}.python39Full.withPackages (
+          pythonEnv = nixpkgs.legacyPackages.${system}.python39.withPackages (
             ps: with ps; [
               pip
-              (python-lsp-server.override { withPylint = false; })
+              python-lsp-server
               isort
             ]
           );

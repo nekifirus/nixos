@@ -7,7 +7,6 @@
     enable = true;
     layout = "us, ru";
     xkbOptions = "grp:caps_toggle, grp_led:caps, terminate:ctr_alt_bksp";
-    videoDrivers = ["nvidia" "noveau"];
     windowManager.awesome.enable = true;
   };
   home-manager.users.nekifirus.home.packages = with pkgs; [
@@ -16,13 +15,9 @@
     inkscape
     abiword
     dmenu
-    lxappearance
     scrot
     skype
     slack
-    tdesktop
     zoom-us
-    gmrun
-    
   ];
 }

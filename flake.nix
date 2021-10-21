@@ -80,6 +80,45 @@
           
         ];
       };
+      nixos-asus = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./nixos-asus-host.nix
+
+          ./system/nix_config.nix
+          # ./system/openvpn.nix
+          ./system/packages.nix
+
+          ./system/users.nix		
+          ./system/fonts.nix
+          ./system/locale.nix
+
+          ./system/virtualisation.nix
+          
+          
+
+          ./user/alacritty.nix
+          ./user/xserver.nix
+          ./user/email.nix
+	        ./user/emacs.nix
+          ./user/gpg.nix
+          ./user/tmux.nix
+	        ./user/git.nix
+
+          ./user/bash.nix
+          ./user/xresources.nix
+          ./user/syncthing.nix
+	        ./user/direnv.nix
+	        ./user/ssh.nix
+	        ./user/network_manager.nix
+          ./user/browser.nix
+          
+        ];
+      };
     };
   };
 }
