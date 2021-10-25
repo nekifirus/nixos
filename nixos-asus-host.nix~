@@ -18,9 +18,7 @@
     cleanTmpDir = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia" "noveau"];
-  
-  fileSystems."/" =
+   fileSystems."/" =
     { device = "/dev/disk/by-uuid/4e5b84fc-1f0b-4c2f-80a3-38a9db939c0f";
       fsType = "ext4";
     };
