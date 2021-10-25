@@ -8,6 +8,7 @@
       packages.x86_64-linux.python38Packages.pip = pkgs.python38Packages.pip;
       packages.x86_64-linux.python38Packages.redis = pkgs.python38Packages.redis;
       packages.x86_64-linux.python38Packages.celery = pkgs.python38Packages.celery;
+      packages.x86_64-linux.python38Packages.flower = pkgs.python38Packages.flower;
       packages.x86_64-linux.python38Packages.jedi = pkgs.python38Packages.jedi;
       packages.x86_64-linux.python38Packages.isort = pkgs.python38Packages.isort;
       packages.x86_64-linux.python38Packages.flake8 = pkgs.python38Packages.flake8;
@@ -23,6 +24,8 @@
           self.packages.x86_64-linux.python38Packages.isort
           self.packages.x86_64-linux.python38Packages.flake8
           self.packages.x86_64-linux.python38Packages.autopep8
+          self.packages.x86_64-linux.python38Packages.celery
+          self.packages.x86_64-linux.python38Packages.flower
           self.packages.x86_64-linux.python38Packages.python-lsp-server
         ];
         shellHook = ''
