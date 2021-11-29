@@ -13,7 +13,7 @@
         in {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
-            nodejs-16_x
+            nodejs-14_x
           ];
           shellHook = ''
              echo HELLO from nodeshell

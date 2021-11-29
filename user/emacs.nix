@@ -43,6 +43,9 @@
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      solidity-mode
+      tide
+      typescript-mode
       telega
       org-roam
       poporg
