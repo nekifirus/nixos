@@ -8,7 +8,6 @@
     layout = "us, ru";
     xkbOptions = "grp:caps_toggle, grp_led:caps, terminate:ctr_alt_bksp";
     windowManager.awesome.enable = true;
-    windowManager.stumpwm.enable = true;
   };
   home-manager.users.nekifirus.home.packages = with pkgs; [
     conky
@@ -19,7 +18,6 @@
     scrot
     skype
     slack
-    tdesktop
     zoom-us
   ];
 }

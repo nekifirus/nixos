@@ -83,7 +83,7 @@
       epl
       expand-region
       flycheck
-      gitignore-mode
+      # gitignore-mode
       google-this
       google-translate
       ivy
@@ -92,7 +92,7 @@
       markdown-mode
       nix-mode
       no-littering
-      org-plus-contrib
+      # org-plus-contrib
       plantuml-mode
       projectile
       ibuffer-projectile
