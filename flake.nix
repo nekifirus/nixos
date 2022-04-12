@@ -108,6 +108,7 @@
           ./user/tmux.nix
           ./user/git.nix
           ./user/rofi.nix
+          ./user/gtk.nix
           ./user/bash.nix
           ./user/xresources.nix
           #./user/syncthing.nix
