@@ -21,5 +21,6 @@
     slack
     tdesktop
     zoom-us
+    wl-clipboard
   ];
 }
