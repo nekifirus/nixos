@@ -5,7 +5,8 @@
     nyxt
     qutebrowser
     surf
-#    chromium
+    #    chromium
+    google-chrome
     elinks
     firefox
   ];
