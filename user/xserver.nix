@@ -17,7 +17,7 @@
     abiword
     dmenu
     scrot
-    skype
+    skypeforlinux
     slack
     tdesktop
     zoom-us

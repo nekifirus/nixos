@@ -10,7 +10,7 @@
     ignores = ["*~" "*.swp" ".direnvrc" ".envrc" "shell.nix"];
     signing = {
       signByDefault = true;
-      key = "nekifirus@gmail.com";
+      key = "Nikita Mistyukov <nekifirus@gmail.com>";
     };
     extraConfig = {
       core = { editor = "emacsclient -c"; };

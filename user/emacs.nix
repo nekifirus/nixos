@@ -31,7 +31,7 @@
      x265
      sqlite
      ripgrep
-     ag
+     silver-searcher
      ispell
      unzip
      gnutar

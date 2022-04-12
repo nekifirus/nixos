@@ -9,8 +9,6 @@
     htop
     wget
     vim
-    direnv
-    nix-direnv
   ];
   home-manager.users.nekifirus.programs.bash = {
     enable = true;
@@ -20,12 +18,12 @@
     sessionVariables = {};
     shellAliases = {
       ls = "exa --group-directories-first";
+      initflake = "nix flake new -t github:nix-community/nix-direnv .";
     };
     shellOptions = [ "histappend"  "checkwinsize" "checkjobs"];
-    bashrcExtra = ''
-      PS1="\W: $  "
-      eval "$(direnv hook bash)"
-    '';
+    # bashrcExtra = ''
+    #   PS1="\W: $  "
+    # '';
     initExtra = "neofetch";
   };
 }

@@ -9,16 +9,16 @@
     LANG = lib.mkForce "en_GB.UTF-8";
   };
 
-  time.timeZone = "Asia/Aqtobe";
+  time.timeZone = "Asia/Istanbul";
   time.hardwareClockInLocalTime = false;
   home-manager.users.nekifirus = {
     home.language = let
       en = "en_GB.UTF-8";
       ru = "ru_RU.UTF-8";
     in {
-      address = ru;
-      monetary = ru;
-      paper = ru;
+      address = en;
+      monetary = en;
+      paper = en;
       time = en;
       base = en;
     };
