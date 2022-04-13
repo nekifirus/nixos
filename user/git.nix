@@ -1,7 +1,12 @@
 { pkgs, ...}:
 
 {
-  home-manager.users.nekifirus.home.packages = with pkgs; [ git gitAndTools.git-extras git-crypt ];
+  home-manager.users.nekifirus.home.packages = with pkgs; [
+    git
+    gitAndTools.git-extras
+    gitAndTools.gh
+    git-crypt
+  ];
 
   home-manager.users.nekifirus.programs.git = {
     enable = true;
