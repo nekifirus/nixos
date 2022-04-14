@@ -21,4 +21,15 @@
       core = { editor = "emacsclient -c"; };
     };
   };
+
+  home-manager.users.nekifirus.services.git-sync = {
+    enable = true;
+    repositories = {
+      org = {
+        path = "/home/nekifirus/org/";
+        uri = "ssh://git@github.com:nekifirus/my-org.git";
+        interval = 1000;
+      };
+    };
+  };
 }
