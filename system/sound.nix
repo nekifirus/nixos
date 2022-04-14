@@ -1,12 +1,17 @@
 { pkgs, ... }:
 
+
 {
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
   home-manager.users.nekifirus.home.packages = with pkgs; [
     vlc
-    pavucontrol
-    pulsemixer
-    
   ];
+
+  hardware.pulseaudio.enable= false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 }
