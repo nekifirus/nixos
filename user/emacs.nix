@@ -38,7 +38,11 @@
      graphviz
   ];
 
-  home-manager.users.nekifirus.services.emacs.enable = true;
+  home-manager.users.nekifirus.services.emacs = {
+    enable = true;
+    client.enable = true;
+    defaultEditor = true;
+  };
   home-manager.users.nekifirus.programs.emacs.enable = true;
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
@@ -111,6 +115,7 @@
       use-package
       use-package-ensure-system-package
       vue-mode
+      web-mode
       which-key
       whole-line-or-region
       yaml-mode
