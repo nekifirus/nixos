@@ -124,6 +124,11 @@
       company-box
       lsp-ui
       lsp-ivy
+      cider
+      cider-eval-sexp-fu
+      clj-refactor
+      clojure-mode
+      clojure-lsp
     ];
   # ]));
 }
