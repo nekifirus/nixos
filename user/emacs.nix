@@ -128,7 +128,6 @@
       cider-eval-sexp-fu
       clj-refactor
       clojure-mode
-      clojure-lsp
     ];
   # ]));
 }
