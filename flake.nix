@@ -89,6 +89,7 @@
 	        ./nixos-thinkpad-host.nix
 	        ./system/nix_config.nix
 
+          ./system/zram.nix
           ./system/packages.nix
           #./system/openvpn.nix
           #./system/redshift.nix
