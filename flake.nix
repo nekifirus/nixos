@@ -103,7 +103,7 @@
           ./user/alacritty.nix
           ./user/xserver.nix
           ./user/gnome.nix
-          # ./user/email.nix
+          ./user/email.nix
           ./user/emacs.nix
           ./user/gpg.nix
           ./user/tmux.nix

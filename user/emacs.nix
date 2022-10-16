@@ -47,6 +47,8 @@
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      poetry
+      org-mime
       solidity-mode
       tide
       typescript-mode
