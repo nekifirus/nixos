@@ -11,12 +11,9 @@
     windowManager.stumpwm.enable = true;
   };
   home-manager.users.nekifirus.home.packages = with pkgs; [
-    conky
     electrum
     inkscape
-    abiword
     dmenu
-    scrot
     skypeforlinux
     slack
     tdesktop
