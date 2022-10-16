@@ -1,41 +1,38 @@
 { config, pkgs, lib, ... }:
 
-# with lib;
+with lib;
 
-# let
-#   cfg = config.services.emacs;
-#   emacsCfg = config.programs.emacs;
-#   emacsBinPath = "${emacsCfg.finalPackage}/bin";
+let
+  cfg = config.home-manager.users.nekifirus.services.emacs;
+  emacsBinPath = "${cfg.package}/bin";
 
-#   captureDesktopItem = pkgs.makeDesktopItem rec {
-#     name = "emacscapture";
-#     desktopName = "Emacs Capture";
-#     genericName = "Text Editor";
-#     comment = "Edit text";
-#     mimeType ="x-scheme-handler/org-protocol";
-#     exec = "${emacsBinPath}/emacsclient -u";
-#     icon = "emacs";
-#     type = "Application";
-#     terminal = "false";
-#     categories = "Utility;TextEditor;";
-#     extraEntries = ''
-#       StartupWMClass=Capture
-#     '';
-#    };
-# in {
+  captureDesktopItem = pkgs.makeDesktopItem rec {
+    name = "emacscapture";
+    desktopName = "Emacs Capture";
+    genericName = "Text Editor";
+    comment = "Edit text";
+    mimeTypes = ["x-scheme-handler/org-protocol"];
+    exec = "${emacsBinPath}/emacsclient -- %u";
+    icon = "emacs";
+    type = "Application";
+    terminal = false;
+    categories = ["Utility" "TextEditor"];
+    startupWMClass="Capture";
+  };
+in
 {
-  # home-manager.users.nekifirus.home.packages = [ captureDesktopItem ];
   home-manager.users.nekifirus.home.packages = with pkgs; [
-     imagemagick
-     ffmpeg-full
-     x265
-     sqlite
-     ripgrep
-     silver-searcher
-     ispell
-     unzip
-     gnutar
-     graphviz
+    captureDesktopItem
+    imagemagick
+    ffmpeg-full
+    x265
+    sqlite
+    ripgrep
+    silver-searcher
+    ispell
+    unzip
+    gnutar
+    graphviz
   ];
 
   home-manager.users.nekifirus.services.emacs = {
