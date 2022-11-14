@@ -33,6 +33,7 @@ in
     unzip
     gnutar
     graphviz
+    jre
   ];
 
   home-manager.users.nekifirus.services.emacs = {
@@ -44,6 +45,7 @@ in
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      restclient
       poetry
       org-mime
       solidity-mode
@@ -51,6 +53,7 @@ in
       typescript-mode
       telega
       org-roam
+      org-roam-ui
       poporg
       go-mode
       protobuf-mode
