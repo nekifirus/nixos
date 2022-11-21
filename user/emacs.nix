@@ -34,6 +34,7 @@ in
     gnutar
     graphviz
     jre
+    ledger
   ];
 
   home-manager.users.nekifirus.services.emacs = {
@@ -45,6 +46,7 @@ in
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      ledger-mode
       restclient
       poetry
       org-mime
