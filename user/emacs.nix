@@ -46,7 +46,9 @@ in
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      password-store
       ledger-mode
+      flycheck-ledger
       restclient
       poetry
       org-mime
