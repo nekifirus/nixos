@@ -1,0 +1,26 @@
+I started using GNU\Linux in March 2008 with Ubuntu 7.10 (Gutsy
+Gibbon). I was working in the news at the time and was using Linux for
+photo and video production.
+
+In 2012, I switched to the ArchLinux distribution and felt fine for 6
+years.
+
+These distributions are great, but they have one big problem: you need
+to reconfigure it. With Ubuntu it happened twice a year, with Arch -
+every time with new computer.
+
+Problem solved for me with NixOS in October 2018.
+
+This configuration not perfect and need some refactoring, but I use it
+everyday on two machines.
+
+Entrypoint is [[file:flake.nix][flake.nix]]. It describes inputs and outputs from
+configuration.
+
+In section "Modules" you can see which modules in use.
+As example [[file:nixos-thinkpad-host.nix][nixos-thinkpad-host.nix]] describes specific things for my
+current laptop Lenovo ThinkPad L580.
+
+All other things - git, sound, fonts and other modules are the same for both my machines.
+
+Fell free to ask me about my configuration: nekifirus@gmail.com
