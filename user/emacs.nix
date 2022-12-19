@@ -95,7 +95,7 @@ in
       flycheck
       # gitignore-mode
       google-this
-      google-translate
+      go-translate
       ivy
       magit
       magit-popup
