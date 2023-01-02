@@ -6,7 +6,7 @@
   services.xserver = {
     enable = true;
     layout = "us, ru";
-    xkbOptions = "grp:caps_toggle, grp_led:caps, terminate:ctr_alt_bksp";
+    xkbOptions = "grp:win_space_toggle, grp_led:caps, ctrl:swapcaps, terminate:ctr_alt_bksp";
     windowManager.awesome.enable = true;
     windowManager.stumpwm.enable = true;
   };
