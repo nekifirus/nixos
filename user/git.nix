@@ -27,7 +27,7 @@
     repositories = {
       org = {
         path = "/home/nekifirus/org/";
-        uri = "ssh://git@github.com:nekifirus/my-org.git";
+        uri = "ssh://git@git.sr.ht:~nekifirus/org";
         interval = 1000;
       };
     };

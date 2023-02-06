@@ -4,6 +4,7 @@
 {
   home-manager.users.nekifirus.home.packages = with pkgs; [
     vlc
+    pavucontrol
   ];
 
   hardware.pulseaudio.enable= false;

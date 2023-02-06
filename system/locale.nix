@@ -4,12 +4,11 @@
 
   environment.sessionVariables = {
     XKB_DEFAULT_LAYOUT = "us,ru";
-    XKB_DEFAULT_OPTIONS =
-      "grp:caps_toggle,grp_led:caps";
+    XKB_DEFAULT_OPTIONS = "grp:toggle, grp_led:caps, ctrl:swapcaps, ctrl:nocaps, terminate:ctr_alt_bksp";
     LANG = lib.mkForce "en_GB.UTF-8";
   };
 
-  time.timeZone = "Asia/Istanbul";
+  time.timeZone = "CET";
   time.hardwareClockInLocalTime = false;
   home-manager.users.nekifirus = {
     home.language = let

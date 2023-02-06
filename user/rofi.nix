@@ -8,7 +8,7 @@
       font = "mono 18";
       show-icons = true;
       combi-modi = "window,drun,run";
-      theme = "gruvbox-dark-hard";
+      # theme = "gruvbox-dark-hard";
     };
   };
 }

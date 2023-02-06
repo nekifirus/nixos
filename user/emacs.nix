@@ -35,6 +35,7 @@ in
     graphviz
     jre
     ledger
+    hledger
   ];
 
   home-manager.users.nekifirus.services.emacs = {
@@ -46,6 +47,7 @@ in
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      web-server
       paredit
       aggressive-indent
       flycheck-clj-kondo
@@ -105,7 +107,7 @@ in
       markdown-mode
       nix-mode
       no-littering
-      # org-plus-contrib
+      org-contrib
       plantuml-mode
       projectile
       ibuffer-projectile
