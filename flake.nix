@@ -22,6 +22,7 @@
           home-manager.nixosModules.home-manager
           ./nixos-thinkpad-host.nix
           ./system/nix_config.nix
+          ./system/home.nix
 
           ./system/zram.nix
           ./system/packages.nix

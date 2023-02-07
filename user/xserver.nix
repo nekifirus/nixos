@@ -16,8 +16,8 @@
 
     };
     windowManager.awesome.enable = true;
-    windowManager.stumpwm.enable = true;
-    windowManager.i3.enable = true;
+    windowManager.stumpwm.enable = false;
+    windowManager.i3.enable = false;
     windowManager.dwm.enable = true;
     windowManager.exwm.enable = true;
   };
