@@ -29,6 +29,7 @@
   };
   
   home-manager.users.nekifirus.home.packages = with pkgs; [
+    remmina
     inkscape
     blueman
     dmenu
