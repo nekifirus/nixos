@@ -22,6 +22,7 @@ let
 in
 {
   home-manager.users.nekifirus.home.packages = with pkgs; [
+    freetds
     captureDesktopItem
     imagemagick
     ffmpeg-full
@@ -43,6 +44,11 @@ in
     client.enable = true;
     defaultEditor = true;
   };
+  home-manager.users.nekifirus.systemd.user.services.emacs.Unit = {
+          After = [ "graphical-session-pre.target" ];
+          PartOf = [ "graphical-session.target" ];
+  };
+
   home-manager.users.nekifirus.programs.emacs.enable = true;
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
