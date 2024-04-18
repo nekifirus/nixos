@@ -22,6 +22,7 @@ let
 in
 {
   home-manager.users.nekifirus.home.packages = with pkgs; [
+    obsidian
     freetds
     captureDesktopItem
     imagemagick
@@ -44,6 +45,7 @@ in
     client.enable = true;
     defaultEditor = true;
   };
+  # services.emacs.startWithUserSession = "graphical";
   home-manager.users.nekifirus.systemd.user.services.emacs.Unit = {
           After = [ "graphical-session-pre.target" ];
           PartOf = [ "graphical-session.target" ];
@@ -53,6 +55,7 @@ in
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      obsidian
       web-server
       paredit
       aggressive-indent

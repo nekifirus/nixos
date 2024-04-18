@@ -12,7 +12,7 @@
   time.hardwareClockInLocalTime = false;
   home-manager.users.nekifirus = {
     home.language = let
-      en = "en_GB.UTF-8";
+      en = "en_US.UTF-8";
       ru = "ru_RU.UTF-8";
     in {
       address = en;
