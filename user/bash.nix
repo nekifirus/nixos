@@ -3,7 +3,7 @@
 {
   home-manager.users.nekifirus.home.packages = with pkgs; [
     du-dust
-    exa
+    eza
     neofetch
     gnutar
     htop
@@ -17,7 +17,7 @@
     historyIgnore = ["ls" "cd" "exit"];
     sessionVariables = {};
     shellAliases = {
-      ls = "exa --group-directories-first";
+      ls = "eza --group-directories-first";
       initflake = "nix flake new -t github:nix-community/nix-direnv .";
     };
     shellOptions = [ "histappend"  "checkwinsize" "checkjobs"];
