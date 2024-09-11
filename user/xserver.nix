@@ -3,18 +3,19 @@
 
 {
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    layout = "us, ru";
-    xkbOptions = "grp:toggle, grp_led:caps, ctrl:swapcaps, ctrl:nocaps, terminate:ctr_alt_bksp";
-    libinput.touchpad = {
+  services.libinput.touchpad = {
       naturalScrolling = true;
       disableWhileTyping = true;
       additionalOptions = ''
              Option "TappingButtonMap" "lrm"
                  '';                        
 
-    };
+  };
+  
+  services.xserver = {
+    enable = true;
+    xkb.layout = "us, ru";
+    xkb.options = "grp:toggle, grp_led:caps, ctrl:swapcaps, ctrl:nocaps, terminate:ctr_alt_bksp";
     windowManager.awesome.enable = true;
     windowManager.stumpwm.enable = false;
     windowManager.i3.enable = false;

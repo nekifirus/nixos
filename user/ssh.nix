@@ -4,8 +4,8 @@
   services = {
     openssh = {
       enable = true;
-      passwordAuthentication = false;
-      permitRootLogin = "no";
+      settings.PasswordAuthentication = false;
+      settings.PermitRootLogin = "no";
     };
   };
 }

@@ -6,24 +6,24 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-    pkgs.gnome.gnome-tweaks
+    pkgs.gnome-tweaks
     pkgs.gnomeExtensions.cpufreq
   ];
 
   environment.gnome.excludePackages = [
-    pkgs.gnome.cheese
+    pkgs.cheese
     pkgs.gnome-photos
-    pkgs.gnome.gnome-music
-    pkgs.gnome.gnome-terminal
+    pkgs.gnome-music
+    pkgs.gnome-terminal
     pkgs.gedit
     pkgs.epiphany
     pkgs.evince
-    pkgs.gnome.gnome-characters
-    pkgs.gnome.totem
-    pkgs.gnome.tali
-    pkgs.gnome.iagno
-    pkgs.gnome.hitori
-    pkgs.gnome.atomix
+    pkgs.gnome-characters
+    pkgs.totem
+    pkgs.tali
+    pkgs.iagno
+    pkgs.hitori
+    pkgs.atomix
     pkgs.gnome-tour
     # pkgs.gnome.geary I like it yet
   ];

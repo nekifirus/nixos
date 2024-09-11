@@ -2,8 +2,8 @@
 
 {
   fonts = {
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
+    enableDefaultPackages = true;
+    packages = with pkgs; [
       inter
       ibm-plex
       iosevka

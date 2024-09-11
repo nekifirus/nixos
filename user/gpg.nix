@@ -1,10 +1,15 @@
 { config, pkgs, lib, ... }:
 
 {
+  home-manager.users.nekifirus.home.packages = with pkgs; [
+    pinentry
+  ];
+  services.pcscd.enable = true;
   home-manager.users.nekifirus.programs.ssh.enable = false;
   home-manager.users.nekifirus.programs.gpg.enable = true;
   home-manager.users.nekifirus.services.gpg-agent = {
     enable = true;
+    pinentryPackage = pkgs.pinentry;
     defaultCacheTtl = 7200;
     enableSshSupport = true;
     sshKeys = [
@@ -23,7 +28,7 @@
 
   # Disable gnome-keyring ssh-agent
   home-manager.users.nekifirus.xdg.configFile."autostart/gnome-keyring-ssh.desktop".text = ''
-    ${lib.fileContents "${pkgs.gnome3.gnome-keyring}/etc/xdg/autostart/gnome-keyring-ssh.desktop"}
+    ${lib.fileContents "${pkgs.gnome-keyring}/etc/xdg/autostart/gnome-keyring-ssh.desktop"}
     Hidden=true
   '';
 }
