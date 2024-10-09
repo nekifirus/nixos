@@ -55,6 +55,8 @@ in
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      fountain-mode
+      olivetti
       obsidian
       web-server
       paredit
