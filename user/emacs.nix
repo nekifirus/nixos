@@ -22,6 +22,7 @@ let
 in
 {
   home-manager.users.nekifirus.home.packages = with pkgs; [
+    groff
     obsidian
     freetds
     captureDesktopItem

@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    slackpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
 

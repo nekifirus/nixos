@@ -6,5 +6,16 @@
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   home-manager.useGlobalPkgs = true;
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
+  nixpkgs.overlays = [
+    inputs.emacs-overlay.overlay
+    (final: prev:
+      let
+        slackPkgs = import inputs.slackpkgs {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
+      in {
+        slack = slackPkgs.slack;
+      })
+  ];
 }
