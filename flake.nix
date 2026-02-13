@@ -9,6 +9,7 @@
     };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     slackpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    firefoxpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
 
