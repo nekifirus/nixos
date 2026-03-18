@@ -18,6 +18,15 @@
         slack = slackPkgs.slack;
       })
     (final: prev:
+      let
+        claudePkgs = import inputs.claudepkgs {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
+      in {
+        claude-code = claudePkgs.claude-code;
+      })
+    (final: prev:
     let
       firefoxPkgs = import inputs.firefoxpkgs {
         system = prev.system;

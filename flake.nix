@@ -10,6 +10,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     slackpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     firefoxpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    claudepkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
 
@@ -54,6 +55,7 @@
           ./user/ssh.nix
           ./user/network_manager.nix
           ./user/browser.nix
+          ./user/claude.nix
         ];
       };
       nixos-asus = nixpkgs.lib.nixosSystem {

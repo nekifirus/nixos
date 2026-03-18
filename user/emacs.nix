@@ -151,6 +151,8 @@ in
       cider-eval-sexp-fu
       clj-refactor
       clojure-mode
+      gptel
+      claude-code
     ];
   # ]));
 }
