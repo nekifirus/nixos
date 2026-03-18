@@ -152,7 +152,6 @@ in
       clj-refactor
       clojure-mode
       gptel
-      claude-code
     ];
   # ]));
 }
