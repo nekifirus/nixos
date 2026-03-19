@@ -8,6 +8,23 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     inputs.emacs-overlay.overlay
+    # Фикс: emacsql пытается скомпилировать C-расширение sqlite, но в nix-сборке
+    # нет директории sqlite/. Создаём её вручную и подключаем системный sqlite.
+    # org-roam настроен на sqlite-builtin (встроенный в Emacs 29), C-расширение не нужно.
+    (final: prev: {
+      emacsPackagesFor = emacs:
+        (prev.emacsPackagesFor emacs).overrideScope (_: eprev: {
+          emacsql = eprev.emacsql.overrideAttrs (old: {
+            preBuild = ''
+              mkdir -p sqlite
+              echo "all:" > sqlite/Makefile
+              touch sqlite/emacsql-sqlite
+              chmod +x sqlite/emacsql-sqlite
+            '';
+            buildInputs = (old.buildInputs or []) ++ [ prev.sqlite ];
+          });
+        });
+    })
     (final: prev:
       let
         slackPkgs = import inputs.slackpkgs {
