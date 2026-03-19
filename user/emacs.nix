@@ -151,6 +151,7 @@ in
       cider-eval-sexp-fu
       clj-refactor
       clojure-mode
+      mu4e
       gptel
       (epkgs.trivialBuild {
         pname = "claude-code";
