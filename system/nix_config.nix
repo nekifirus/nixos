@@ -44,6 +44,15 @@
         claude-code = claudePkgs.claude-code;
       })
     (final: prev:
+      let
+        zoomPkgs = import inputs.zoompkgs {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
+      in {
+        zoom-us = zoomPkgs.zoom-us;
+      })
+    (final: prev:
     let
       firefoxPkgs = import inputs.firefoxpkgs {
         system = prev.system;

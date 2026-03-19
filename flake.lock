@@ -126,7 +126,8 @@
         "firefoxpkgs": "firefoxpkgs",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "slackpkgs": "slackpkgs"
+        "slackpkgs": "slackpkgs",
+        "zoompkgs": "zoompkgs"
       }
     },
     "slackpkgs": {
@@ -136,6 +137,22 @@
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "677fbe97984e7af3175b6c121f3c39ee5c8d62c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "zoompkgs": {
+      "locked": {
+        "lastModified": 1773628058,
+        "narHash": "sha256-hpXH0z3K9xv0fHaje136KY872VT2T5uwxtezlAskQgY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f8573b9c935cfaa162dd62cc9e75ae2db86f85df",
         "type": "github"
       },
       "original": {

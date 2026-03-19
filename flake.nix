@@ -11,6 +11,7 @@
     slackpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     firefoxpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     claudepkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    zoompkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
 
