@@ -152,6 +152,17 @@ in
       clj-refactor
       clojure-mode
       gptel
+      (epkgs.trivialBuild {
+        pname = "claude-code";
+        version = "0.1.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "stevemolitor";
+          repo = "claude-code.el";
+          rev = "4a9914bd4161eb43f489820f9174c62390e5adc8";
+          sha256 = "13pbbypq5xjmp8wpiin9n6hiylsz85gpfj9dmwjffwb1mpm46a91";
+        };
+        packageRequires = [ epkgs.transient epkgs.inheritenv epkgs.eat ];
+      })
     ];
   # ]));
 }
