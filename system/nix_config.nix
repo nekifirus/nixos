@@ -28,7 +28,7 @@
     (final: prev:
       let
         slackPkgs = import inputs.slackpkgs {
-          system = prev.system;
+          system = prev.stdenv.hostPlatform.system;
           config.allowUnfree = true;
         };
       in {
@@ -37,7 +37,7 @@
     (final: prev:
       let
         claudePkgs = import inputs.claudepkgs {
-          system = prev.system;
+          system = prev.stdenv.hostPlatform.system;
           config.allowUnfree = true;
         };
       in {
@@ -46,7 +46,7 @@
     (final: prev:
       let
         zoomPkgs = import inputs.zoompkgs {
-          system = prev.system;
+          system = prev.stdenv.hostPlatform.system;
           config.allowUnfree = true;
         };
       in {
@@ -55,7 +55,7 @@
     (final: prev:
     let
       firefoxPkgs = import inputs.firefoxpkgs {
-        system = prev.system;
+        system = prev.stdenv.hostPlatform.system;
         # allowUnfree не нужен, но можно оставить как есть, если хочешь единообразия
         config = {};
       };

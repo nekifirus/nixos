@@ -9,7 +9,7 @@
       iosevka
       source-code-pro
       emacs-all-the-icons-fonts
-      ubuntu_font_family
+      ubuntu-classic
     ];
     fontDir.enable = true;
     enableGhostscriptFonts = true;

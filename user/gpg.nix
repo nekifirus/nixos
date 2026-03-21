@@ -1,15 +1,15 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   home-manager.users.nekifirus.home.packages = with pkgs; [
-    pinentry
+    pinentry-gnome3
   ];
   services.pcscd.enable = true;
   home-manager.users.nekifirus.programs.ssh.enable = false;
   home-manager.users.nekifirus.programs.gpg.enable = true;
   home-manager.users.nekifirus.services.gpg-agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry;
+    pinentry.package = pkgs.pinentry-gnome3;
     defaultCacheTtl = 7200;
     enableSshSupport = true;
     sshKeys = [
@@ -26,9 +26,4 @@
   # prevent clobbering SSH_AUTH_SOCK
   home-manager.users.nekifirus.home.sessionVariables.GSM_SKIP_SSH_AGENT_WORKAROUND = "1";
 
-  # Disable gnome-keyring ssh-agent
-  home-manager.users.nekifirus.xdg.configFile."autostart/gnome-keyring-ssh.desktop".text = ''
-    ${lib.fileContents "${pkgs.gnome-keyring}/etc/xdg/autostart/gnome-keyring-ssh.desktop"}
-    Hidden=true
-  '';
 }

@@ -2,9 +2,9 @@
 
 {
   home-manager.users.nekifirus.home.packages = with pkgs; [
-    du-dust
+    dust
     eza
-    neofetch
+    fastfetch
     gnutar
     htop
     wget
@@ -24,6 +24,6 @@
     # bashrcExtra = ''
     #   PS1="\W: $  "
     # '';
-    initExtra = "neofetch";
+    initExtra = "fastfetch";
   };
 }

@@ -34,9 +34,8 @@
     inkscape
     blueman
     dmenu
-    skypeforlinux
     slack
-    tdesktop
+    telegram-desktop
     zoom-us
     wl-clipboard
   ];

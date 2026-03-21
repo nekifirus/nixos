@@ -45,11 +45,7 @@ in
     enable = true;
     client.enable = true;
     defaultEditor = true;
-  };
-  # services.emacs.startWithUserSession = "graphical";
-  home-manager.users.nekifirus.systemd.user.services.emacs.Unit = {
-          After = [ "graphical-session-pre.target" ];
-          PartOf = [ "graphical-session.target" ];
+    startWithUserSession = "graphical";
   };
 
   home-manager.users.nekifirus.programs.emacs.enable = true;
@@ -112,7 +108,6 @@ in
       flycheck
       # gitignore-mode
       google-this
-      go-translate
       ivy
       magit
       magit-popup
@@ -136,7 +131,6 @@ in
       system-packages
       toc-org
       use-package
-      use-package-ensure-system-package
       vue-mode
       web-mode
       which-key
