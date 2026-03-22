@@ -19,6 +19,7 @@
     shellAliases = {
       ls = "eza --group-directories-first";
       initflake = "nix flake new -t github:nix-community/nix-direnv .";
+      start-exwm = "startx $HOME/.exwm-xinitrc -- :2 vt4";
     };
     shellOptions = [ "histappend"  "checkwinsize" "checkjobs"];
     # bashrcExtra = ''

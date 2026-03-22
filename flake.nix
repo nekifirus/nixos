@@ -57,6 +57,7 @@
           ./user/network_manager.nix
           ./user/browser.nix
           ./user/claude.nix
+          ./user/exwm.nix
         ];
       };
       nixos-asus = nixpkgs.lib.nixosSystem {

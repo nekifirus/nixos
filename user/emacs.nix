@@ -52,6 +52,7 @@ in
   # programs.emacs.package = pkgs.emacsUnstable;
   home-manager.users.nekifirus.programs.emacs.extraPackages = epkgs:
     with epkgs; [
+      exwm
       fountain-mode
       olivetti
       obsidian
