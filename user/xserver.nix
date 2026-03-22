@@ -15,12 +15,7 @@
   services.xserver = {
     enable = true;
     xkb.layout = "us, ru";
-    xkb.options = "grp:win_space_toggle, grp_led:caps, ctrl:swapcaps, ctrl:nocaps, terminate:ctr_alt_bksp";
-    windowManager.awesome.enable = true;
-    windowManager.stumpwm.enable = false;
-    windowManager.i3.enable = false;
-    windowManager.dwm.enable = true;
-    windowManager.exwm.enable = true;
+    xkb.options = "grp:toggle, grp_led:caps, ctrl:swapcaps, ctrl:nocaps, terminate:ctr_alt_bksp";
   };
   # xautolock отключён — не уважает XSS inhibition (fullscreen видео).
   # В GNOME блокировкой управляет сам GNOME.
