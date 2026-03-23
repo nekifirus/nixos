@@ -2,14 +2,19 @@
 
 let
   pinentryWithNotify = pkgs.writeShellScriptBin "pinentry" ''
+    # Ищем gpg процесс через /proc и поднимаемся по дереву до реального инициатора
     CALLER="неизвестно"
-    CALLER_PID=$(${pkgs.iproute2}/bin/ss -xp 2>/dev/null \
-      | grep 'S\.gpg-agent[^.]' \
-      | grep -v '"gpg-agent"' \
-      | grep -oP 'pid=\K[0-9]+' \
-      | head -1)
-    if [ -n "$CALLER_PID" ]; then
-      CALLER=$(ps -p "$CALLER_PID" -o comm= 2>/dev/null || echo "неизвестно")
+    GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -x gpg 2>/dev/null | head -1)
+    if [ -n "$GPG_PID" ]; then
+      PARENT_PID=$(awk '/PPid:/{print $2}' /proc/$GPG_PID/status 2>/dev/null)
+      PARENT_NAME=$(cat /proc/$PARENT_PID/comm 2>/dev/null)
+      GPARENT_PID=$(awk '/PPid:/{print $2}' /proc/$PARENT_PID/status 2>/dev/null)
+      GPARENT_NAME=$(cat /proc/$GPARENT_PID/comm 2>/dev/null)
+      if [ -n "$GPARENT_NAME" ] && [ -n "$PARENT_NAME" ]; then
+        CALLER="$GPARENT_NAME → $PARENT_NAME"
+      elif [ -n "$PARENT_NAME" ]; then
+        CALLER="$PARENT_NAME"
+      fi
     fi
     ${pkgs.libnotify}/bin/notify-send \
       --icon=dialog-password \

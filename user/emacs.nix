@@ -158,6 +158,17 @@ in
         };
         packageRequires = [ epkgs.transient epkgs.inheritenv epkgs.eat ];
       })
+      (epkgs.trivialBuild {
+        pname = "clickup";
+        version = "0.1.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "sganon";
+          repo = "clickup-emacs";
+          rev = "5f60cb0979976d216a0be2df789a5e9a1d3ad40c";
+          sha256 = "06pb2rag6780wjnciw46ilzp0v2wdplpfmc1zikf8ihy0fiqklqa";
+        };
+        packageRequires = with epkgs; [ request dash s ];
+      })
     ];
   # ]));
 }
