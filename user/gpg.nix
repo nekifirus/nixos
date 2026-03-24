@@ -8,6 +8,7 @@ let
 
     GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -x gpg 2>/dev/null | head -1)
     [ -z "$GPG_PID" ] && GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -x gpg2 2>/dev/null | head -1)
+    [ -z "$GPG_PID" ] && GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -x ssh 2>/dev/null | head -1)
 
     if [ -n "$GPG_PID" ]; then
       # Поднимаемся по дереву от gpg/gpg2, пропуская shell-процессы
