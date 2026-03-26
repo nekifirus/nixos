@@ -55,6 +55,7 @@ in
     enable = true;
     pinentry.package = pinentryWithCaller;
     defaultCacheTtl = 1200;
+    maxCacheTtl = 86400;  # 24ч — чтобы дневной бэкап нашёл кэшированный ключ
     enableSshSupport = true;
     sshKeys = [
       "AB5D1B410584680A5E8B2C94A3B6EE46C295B2CD"
