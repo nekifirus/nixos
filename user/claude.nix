@@ -14,6 +14,7 @@ in
     home.packages = [
       pkgs.claude-code
       pkgs.google-cloud-sdk  # gcloud CLI
+      pkgs.jq  # JSON processor for configuration and data transformation
       gcp-logs-mcp
     ];
 
