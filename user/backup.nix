@@ -14,6 +14,7 @@ let
 
     ${pkgs.restic}/bin/restic backup \
       --verbose \
+      --compression max \
       --one-file-system \
       /home/nekifirus \
       --exclude=/home/nekifirus/.cache \

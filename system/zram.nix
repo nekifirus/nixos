@@ -11,12 +11,12 @@
   hardware.ksm.enable = true;
 
   # Убивает прожорливые процессы до того как система зависает.
-  # Срабатывает когда свободной памяти < 5% или свободного swap < 10%.
+  # Срабатывает когда свободной памяти < 15% или свободного swap < 25%.
   services.earlyoom = {
     enable = true;
-    # Убиваем при 10% RAM чтобы успеть до заморозки системы.
+    # Убиваем при 15% RAM чтобы успеть до заморозки системы.
     # Swap — при 25%: когда swap близок к нулю, система уже не отвечает.
-    freeMemThreshold = 10;
+    freeMemThreshold = 15;
     freeSwapThreshold = 25;
     enableNotifications = true;
     extraArgs = [
