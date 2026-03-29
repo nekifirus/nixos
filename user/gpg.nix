@@ -18,8 +18,9 @@ let
     # Try exact match first, then pattern match
     GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -x gpg 2>/dev/null | head -1)
     [ -z "$GPG_PID" ] && GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -x gpg2 2>/dev/null | head -1)
-    [ -z "$GPG_PID" ] && GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -f "gpg" 2>/dev/null | grep -v gpg-agent | head -1)
     [ -z "$GPG_PID" ] && GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -x ssh 2>/dev/null | head -1)
+    [ -z "$GPG_PID" ] && GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -f "gpg" 2>/dev/null | grep -v gpg-agent | head -1)
+    [ -z "$GPG_PID" ] && GPG_PID=$(${pkgs.procps}/bin/pgrep -u "$USER" -f "ssh" 2>/dev/null | grep -v sshd | head -1)
 
     echo "DEBUG: GPG_PID=$GPG_PID" >> "$DEBUG_LOG"
     if [ -n "$GPG_PID" ]; then
