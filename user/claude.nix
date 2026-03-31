@@ -1,34 +1,22 @@
 { config, lib, pkgs, ... }:
 
 let
-  # MCP сервер для Google Cloud Logging
-  gcp-logs-mcp = pkgs.writeShellScriptBin "gcp-logs-mcp" ''
-    exec ${pkgs.python3}/bin/python3 ${./mcp-servers/gcp_logs_mcp.py} "$@"
+  # Database query wrapper - reads credentials from pass, supports postgres and mssql
+  db-query = pkgs.writeShellScriptBin "db-query" ''
+    exec bash ${./db-tools/db_query.sh} "$@"
   '';
-
-  mcpCommand = "${gcp-logs-mcp}/bin/gcp-logs-mcp";
 
 in
 {
   home-manager.users.nekifirus = {
     home.packages = [
       pkgs.claude-code
-      pkgs.google-cloud-sdk  # gcloud CLI
-      pkgs.jq  # JSON processor for configuration and data transformation
-      gcp-logs-mcp
+      pkgs.google-cloud-sdk
+      pkgs.jq           # JSON processor for configuration and data transformation
+      pkgs.postgresql   # psql client
+      pkgs.sqlcmd       # Microsoft SQL Server CLI (Go edition)
+      db-query
     ];
-
-    # MCP сервер конфигурация для Claude Code
-    home.file.".mcp.json" = {
-      enable = true;
-      text = lib.generators.toJSON {} {
-        mcpServers = {
-          gcp-logs = {
-            command = mcpCommand;
-          };
-        };
-      };
-    };
 
     # Дополнительная конфигурация gcloud если нужна
     home.sessionVariables = {
